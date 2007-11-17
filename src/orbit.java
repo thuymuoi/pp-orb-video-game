@@ -1,17 +1,23 @@
 import javax.swing.JFrame;
 
 
-public class orbit extends JFrame {
+public class orbit {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//Input
 		
-		//Update
+		//Initialization
+		JFrame GameWindow = new JFrame();
+		addKeyListener(this);
 		
-		//Display
+		while(true){
+			//Input
+		
+			//Update
+		
+			//Display
 	}
 
 }
