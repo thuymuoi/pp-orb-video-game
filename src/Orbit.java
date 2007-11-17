@@ -1,35 +1,38 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
+import javax.swing.Timer;
 
 
 public class Orbit {
+	static Player player;
 	static Boolean key1 = false;
 	static Boolean key2 = false;
+	static Timer tickTimer;
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		//Initialization
 		GameWindow gameWindow = new GameWindow();
-		key1 = false;
-		key2 = false;
 		
 		
 		//Input
 		KeyListener listener = new KeyListener() {
 		      public void keyPressed(KeyEvent e) {
 		    	  switch (e.getKeyCode()) {
-		    	  	case KeyEvent.VK_SPACE: key1 = true;
-		    	  	case KeyEvent.VK_C: key2 = true;
+		    	  	case KeyEvent.VK_SPACE: key1 = true; break;
+		    	  	case KeyEvent.VK_C: key2 = true; break;
 		    	  }
 		      }
 
 		      public void keyReleased(KeyEvent e) {
 		    	  switch (e.getKeyCode()) {
-		    	  	case KeyEvent.VK_SPACE: key1 = false;
-		    	  	case KeyEvent.VK_C: key2 = false;
+		    	  	case KeyEvent.VK_SPACE: key1 = false; break;
+		    	  	case KeyEvent.VK_C: key2 = false; break;
 		    	  }
 		      }
 
@@ -40,16 +43,19 @@ public class Orbit {
 		     
 		    };
 		    gameWindow.addKeyListener(listener);
-		    
-	    //MAIN LOOP//
-		while(true){
-			
-		
-			//Update
-		
-			//Display
-			System.out.println("Key 1 is :" + key1 + "Key 2 is :" + key2);
-		}	
+		    tickTimer = new javax.swing.Timer(17, new ActionListener() {
+		          public void actionPerformed(ActionEvent e) {
+		              tick();
+		          }
+		       });
+		    tickTimer.start();
+	}
+	
+	public static void tick(){
+		//Update
+	
+		//Display
+		System.out.println("Key 1 is :" + key1 + "Key 2 is :" + key2);
 	}
 
 }

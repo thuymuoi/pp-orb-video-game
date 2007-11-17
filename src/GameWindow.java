@@ -1,3 +1,4 @@
+import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -11,6 +12,8 @@ public class GameWindow extends JFrame {
 		super("Orbit");
 		mainPanel = new JPanel();
 		setContentPane(mainPanel);
+		setVisible(true);
+		setSize(new Dimension(640,480));
 	}
 
 }
