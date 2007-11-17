@@ -1,19 +1,22 @@
-import java.lang.Math;
+import java.lang.Math.*;
 
 
 public class Player {
 	private Position mainPosition;
 	private Thruster thruster;
+	private double speed;
 	
 	//default constructor
 	public Player () {
+		speed = 5;
 		mainPosition = new Position (50,150);
 		thruster = new Thruster(mainPosition);
 	}
 	
 	public void update(Boolean thrust, Boolean slow){	
 		if(thrust){
-			
+			mainPosition.x += speed*java.lang.Math.cos(thruster.getAngle());
+			mainPosition.y += speed*java.lang.Math.sin(thruster.getAngle());
 			thruster.updatePosition(mainPosition);
 		}
 		else {
