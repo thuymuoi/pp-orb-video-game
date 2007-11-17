@@ -4,14 +4,13 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 
-public class orbit {
+public class Orbit {
 	static Boolean key1 = false;
 	static Boolean key2 = false;
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		orbit orb1 = new orbit();
 		//Initialization
 		GameWindow gameWindow = new GameWindow();
 		key1 = false;
