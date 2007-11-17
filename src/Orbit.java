@@ -56,6 +56,7 @@ public class Orbit {
 	
 		//Display
 		System.out.println("Key 1 is :" + key1 + "Key 2 is :" + key2);
+		
 	}
 
 }
