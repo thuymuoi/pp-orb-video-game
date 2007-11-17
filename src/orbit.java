@@ -9,8 +9,8 @@ public class orbit {
 	public static void main(String[] args) {
 		
 		//Initialization
-		JFrame GameWindow = new JFrame();
-		addKeyListener(this);
+		GameWindow gameWindow = new GameWindow();
+		gameWindow.addKeyListener(gameWindow);
 		
 		while(true){
 			//Input
@@ -18,6 +18,7 @@ public class orbit {
 			//Update
 		
 			//Display
+		}	
 	}
 
 }
