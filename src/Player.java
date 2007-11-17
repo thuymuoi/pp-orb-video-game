@@ -43,6 +43,7 @@ public class Player {
 		public Thruster(Position orbit){
 			angle = 0;
 			thrustPosition = new Position((int)(orbit.x + distance* java.lang.Math.cos(angle)),(int)(orbit.y + distance*java.lang.Math.sin(angle)));
+			distance = 5;
 		}
 		
 		public Position getPosition(){
