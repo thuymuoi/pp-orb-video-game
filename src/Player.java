@@ -1,18 +1,15 @@
 public class Player {
 	private Position mainPosition;  //Position of main ship
 	private Thruster thruster;		//Thruster object for ship
-	//private double speed;		//Original speed idea
 	private Position speed;
 	private double speedMagnitude;
 	private int	maxSpeed;
 	
 	//default constructor
 	public Player () {
-		//speed = 5;		//Original speed idea
-		
 		speed = new Position(0,0);
 		speedMagnitude = 2;
-		maxSpeed = 6;
+		maxSpeed = 1;
 		
 		mainPosition = new Position (50,150);
 		thruster = new Thruster(mainPosition);
@@ -20,10 +17,6 @@ public class Player {
 	
 	public void update(Boolean thrust, Boolean slow){	
 		if(thrust){
-			//Original speed idea
-			//mainPosition.x -= speed*java.lang.Math.cos(thruster.getAngle());
-			//mainPosition.y -= speed*java.lang.Math.sin(thruster.getAngle());
-		
 			speed.x += (int)(speedMagnitude * java.lang.Math.cos(thruster.getAngle()));
 			speed.y += (int)(speedMagnitude * java.lang.Math.sin(thruster.getAngle()));
 			if(speed.x > maxSpeed){
@@ -33,28 +26,21 @@ public class Player {
 				speed.y = maxSpeed;
 			}
 		
-			if(slow){
-				speed.x = java.lang.Math.round(((float)speed.x)/2);
-				speed.y = java.lang.Math.round(((float)speed.y)/2);
-			}
-			
 			mainPosition.x -= speed.x;
 			mainPosition.y -= speed.y;
 			thruster.updatePosition(mainPosition);
 		}
 		else {
-			if(slow){
-				speed.x = java.lang.Math.round(((float)speed.x)/2);
-				speed.y = java.lang.Math.round(((float)speed.y)/2);
-			}	
-			
 			mainPosition.x -= speed.x;
 			mainPosition.y -= speed.y;
 			thruster.updateSlowAnglePosition(mainPosition);
 		}
-		
-
-		
+		/*
+		if(slow){
+			speed.x = java.lang.Math.round(((float)speed.x)/2);
+			speed.y = java.lang.Math.round(((float)speed.y)/2);
+		}
+		*/
 			
 	}
 	
