@@ -21,8 +21,8 @@ public class Player {
 			//mainPosition.x -= speed*java.lang.Math.cos(thruster.getAngle());
 			//mainPosition.y -= speed*java.lang.Math.sin(thruster.getAngle());
 		
-			speed.x += speedMagnitude * java.lang.Math.cos(thruster.getAngle());
-			speed.y += speedMagnitude * java.lang.Math.sin(thruster.getAngle());
+			speed.x += (int)(speedMagnitude * java.lang.Math.cos(thruster.getAngle()));
+			speed.y += (int)(speedMagnitude * java.lang.Math.sin(thruster.getAngle()));
 			
 			mainPosition.x -= speed.x;
 			mainPosition.y -= speed.y;
