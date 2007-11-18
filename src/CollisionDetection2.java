@@ -26,7 +26,7 @@ Player player;
 				incomingAngle = Math.atan(player.getSpeed().x/player.getSpeed().y);
 			} catch (ArithmeticException e)
 			{
-				incomingAngle = 90;
+				incomingAngle = Math.PI/2;
 			}
 			//change the speed of the player according to the new coordinate.
 			double newSpeedX = 0;
