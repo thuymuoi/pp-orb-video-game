@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+import java.awt.Polygon;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,6 +9,9 @@ import java.util.ArrayList;
 public class MapLoader {
 	ArrayList lineList = new ArrayList();
 	Graphics graphics;
+	Polygon polygon;
+	ArrayList<Polygon> polygons = new ArrayList<Polygon>();
+	
 	public MapLoader(GameWindow gameWindow) {
 		graphics = gameWindow.getGraphics();
 	}
@@ -15,10 +19,13 @@ public class MapLoader {
 	public ArrayList<Line> readFile(String filename) throws IOException{
 		BufferedReader input = new BufferedReader(new FileReader(filename));
 		lineList = new ArrayList();
+		polygon = new Polygon();
 		double x;
 		double y;
 		double oldx=-96822.96822;
 		double oldy=-96822.96822;
+		
+		
 		while(true){
 			String line = input.readLine();
 
@@ -33,9 +40,13 @@ public class MapLoader {
 			}
 			oldx = x;
 			oldy = y;
+			
+			
+			polygon.addPoint((int)((x+120)*5), (int)((y+205)*2.3));
 		}
 		System.out.println("Size: " + lineList.size());
-
+		
+		polygons.add(polygon);
 		input.close();
 		return lineList;
 	}
@@ -56,5 +67,9 @@ public class MapLoader {
 			return starList;
 		}
 		return null;
+	}
+
+	public Polygon getPolygon(int currentLevel) {
+		return polygons.get(currentLevel);
 	}
 }
