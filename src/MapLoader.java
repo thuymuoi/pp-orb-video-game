@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 
 public class MapLoader {
-	ArrayList lineList;
+	ArrayList lineList = new ArrayList();
 	public void readFile() throws IOException
 	{
 		BufferedReader input = new BufferedReader(new FileReader("src/map.txt"));
@@ -29,7 +29,7 @@ public class MapLoader {
 			oldx = x;
 			oldy = y;
 		}
-
+		System.out.println("Size: " + lineList.size());
 	
 	input.close();
 }

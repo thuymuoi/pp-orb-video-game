@@ -67,7 +67,7 @@ public class Orbit {
 		//System.out.println("Thrust- x:" + player.getThrustPosition().x + " y:" + player.getThrustPosition().y);
 		gameWindow.clear();
 		gameWindow.draw(player);
-		Star star1 = new Star(gameWindow.getGraphics(),100,100);
+		Star star1 = new Star(gameWindow.getGraphics(),250,250);
 		star1.drawStar();
 
 		
