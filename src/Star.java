@@ -19,7 +19,7 @@ public class Star {
 	
 	public void drawStar(){
 		try {
-			bi = ImageIO.read(new File("src/Star.jpg")); 
+			bi = ImageIO.read(new File("src/Star.gif")); 
 		} catch (IOException e){
 			System.out.println("asdf");
 		}

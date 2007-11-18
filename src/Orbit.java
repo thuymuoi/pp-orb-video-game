@@ -35,7 +35,7 @@ public class Orbit {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		stars = mapLoader.generateStars();
+		stars = mapLoader.generateStars("src/map.txt");
 		player.changeHealth(100);
 
 		//Input
@@ -96,7 +96,7 @@ public class Orbit {
 			}
 		}
 		for(Object star:stars){
-			if(collisionDetection.genericCollision(new Position(((Star)star).getX(),((Star)star).getY()),15)){
+			if(collisionDetection.genericCollision(new Position(((Star)star).getX(),((Star)star).getY()),10)){
 				player.changeHealth(100);
 				System.out.println("COLLECTED A STAR!!!");
 				stars.remove(star);
@@ -114,8 +114,12 @@ public class Orbit {
 		}
 		if(stars.size()  == 0){
 			System.out.println("YOU WIN!!!");
-			if(currentLevel < 1)
+			if(currentLevel < 1){
 				currentLevel++;
+				stars = mapLoader.generateStars("src/map2.txt");
+				player.setMainPosition(100, 150);
+			}
+			
 		}
 		//Display 
 		gameWindow.clear();
