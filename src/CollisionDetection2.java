@@ -56,4 +56,14 @@ Player player;
 			return true;
 		}
 	}
+	public Boolean genericCollision(Position pos, int size){
+		if(Math.abs(player.getMainPosition().x - pos.x) < size/2 + player.getRadius() && Math.abs(player.getMainPosition().y - pos.y) < size/2 + player.getRadius() ){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+			
+
 }
