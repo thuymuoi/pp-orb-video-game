@@ -3,6 +3,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.Timer;
@@ -15,13 +16,14 @@ public class Orbit {
 	static Timer tickTimer;
 	static GameWindow gameWindow = new GameWindow();
 	static MapLoader mapLoader = new MapLoader();
+	static ArrayList maps = new ArrayList();
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		//Initialization
 		try {
-			mapLoader.readFile();
+			maps.add(mapLoader.readFile());
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -69,8 +71,11 @@ public class Orbit {
 		gameWindow.draw(player);
 		Star star1 = new Star(gameWindow.getGraphics(),250,250);
 		star1.drawStar();
+		for(Object lineList: maps){
+			gameWindow.draw((ArrayList<Line>)lineList);
+		}
 
-		
+
 	}
 
 }

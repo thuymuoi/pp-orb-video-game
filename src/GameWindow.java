@@ -2,6 +2,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -26,6 +27,11 @@ public class GameWindow extends JFrame {
 	public void clear() {
 		graphics.clearRect(0,0, 640, 480);
 		
+	}
+	public void draw(ArrayList<Line> lines){
+		for(Line line:lines){
+			graphics.drawLine((int)(line.getStartP().x), (int)(line.getStartP().y), (int)(line.getEndP().x), (int)(line.getEndP().y));
+		}
 	}
 
 }
