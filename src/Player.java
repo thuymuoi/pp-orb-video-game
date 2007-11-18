@@ -10,7 +10,7 @@ public class Player {
 		//speed = 5;		//Original speed idea
 		
 		speed = new Position(0,0);
-		speedMagnitude = 1;
+		speedMagnitude = 5;
 		mainPosition = new Position (50,150);
 		thruster = new Thruster(mainPosition);
 	}
