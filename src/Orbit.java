@@ -19,7 +19,10 @@ public class Orbit {
 	static ArrayList maps = new ArrayList();
 	static CollisionDetection2 collisionDetection = new CollisionDetection2(player);
 	static ArrayList stars = new ArrayList();
-	static Sound myOrb = new Sound();
+	static Sound crashSound = new Sound();
+	static Sound thrustSound = new Sound();
+	static Sound collectSound = new Sound();
+	
 	/**
 	 * @param args
 	 */
@@ -41,6 +44,15 @@ public class Orbit {
 		    	  	case KeyEvent.VK_C: key2 = true; break;
 		    	  }
 		    	  //System.out.println("Key Down");
+		    	  try
+					{
+					
+					thrustSound.playAudio("src/406ship1player2engine.wav");
+					}
+					catch(Exception e2)
+					{           
+						System.out.println(e2);
+					}
 		      }
 
 		      public void keyReleased(KeyEvent e) {
@@ -49,6 +61,7 @@ public class Orbit {
 		    	  	case KeyEvent.VK_C: key2 = false; break;
 		    	  }
 		    	  //System.out.println("Key Up");
+		    	  thrustSound.stopAudio();
 		      }
 
 		      public void keyTyped(KeyEvent e) {}
@@ -74,7 +87,7 @@ public class Orbit {
 				try
 				{
 				
-				myOrb.playAudio("src/406shipscolliding.wav");
+				crashSound.playAudio("src/406shipscolliding.wav");
 				}
 				catch(Exception e)
 				{           
@@ -85,7 +98,7 @@ public class Orbit {
 			}
 			else
 			{
-				myOrb.stopAudio();
+				crashSound.stopAudio();
 			}
 		}
 		for(Object star:stars){
@@ -93,7 +106,22 @@ public class Orbit {
 				player.changeHealth(100);
 				System.out.println("COLLECTED A STAR!!!");
 				stars.remove(star);
+
+				try
+				{
+					collectSound.playAudio("src/bicycle_bell.wav");
+				}
+				catch(Exception e)
+				{           
+					System.out.println(e);
+				}
+
 				break;
+
+			}
+			else
+			{
+				collectSound.stopAudio();  
 			}
 		}
 		System.out.println("Health: " + player.getHealth());
