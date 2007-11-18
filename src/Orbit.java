@@ -23,61 +23,62 @@ public class Orbit {
 	static Sound thrustSound = new Sound();
 	static Sound collectSound = new Sound();
 	static int currentLevel = 0;
-	
+
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		//Initialization
 		try {
-			maps.add(mapLoader.readFile());
+			maps.add(mapLoader.readFile("src/map.txt"));
+			maps.add(mapLoader.readFile("src/map2.txt"));
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 		stars = mapLoader.generateStars();
 		player.changeHealth(100);
-		
+
 		//Input
 		KeyListener listener = new KeyListener() {
-		      public void keyPressed(KeyEvent e) {
-		    	  switch (e.getKeyCode()) {
-		    	  	case KeyEvent.VK_SPACE: key1 = true; break;
-		    	  	case KeyEvent.VK_C: key2 = true; break;
-		    	  }
-		    	  //System.out.println("Key Down");
-		    	  try
-					{
-					
+			public void keyPressed(KeyEvent e) {
+				switch (e.getKeyCode()) {
+				case KeyEvent.VK_SPACE: key1 = true; break;
+				case KeyEvent.VK_C: key2 = true; break;
+				}
+				//System.out.println("Key Down");
+				try
+				{
+
 					thrustSound.playAudio("src/406ship1player2engine.wav");
-					}
-					catch(Exception e2)
-					{           
-						System.out.println(e2);
-					}
-		      }
+				}
+				catch(Exception e2)
+				{           
+					System.out.println(e2);
+				}
+			}
 
-		      public void keyReleased(KeyEvent e) {
-		    	  switch (e.getKeyCode()) {
-		    	  	case KeyEvent.VK_SPACE: key1 = false; break;
-		    	  	case KeyEvent.VK_C: key2 = false; break;
-		    	  }
-		    	  //System.out.println("Key Up");
-		    	  thrustSound.stopAudio();
-		      }
+			public void keyReleased(KeyEvent e) {
+				switch (e.getKeyCode()) {
+				case KeyEvent.VK_SPACE: key1 = false; break;
+				case KeyEvent.VK_C: key2 = false; break;
+				}
+				//System.out.println("Key Up");
+				thrustSound.stopAudio();
+			}
 
-		      public void keyTyped(KeyEvent e) {}
+			public void keyTyped(KeyEvent e) {}
 
-		     
-		    };
-		    gameWindow.addKeyListener(listener);
-		    tickTimer = new javax.swing.Timer(34, new ActionListener() {
-		          public void actionPerformed(ActionEvent e) {
-		              tick();
-		          }
-		       });
-		    tickTimer.start();
+
+		};
+		gameWindow.addKeyListener(listener);
+		tickTimer = new javax.swing.Timer(34, new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				tick();
+			}
+		});
+		tickTimer.start();
 	}
-	
+
 	public static void tick(){
 		//Update
 		player.update(key1, key2);
@@ -85,20 +86,12 @@ public class Orbit {
 		for(Object line: (ArrayList)maps.get(currentLevel)){
 			if(collisionDetection.collideWithLine((Line) line)){
 				System.out.println("Hit Wall");
-				try
-				{
-				
-				crashSound.playAudio("src/406shipscolliding.wav");
-				}
-				catch(Exception e)
-				{           
-					System.out.println(e);
-				}
+				try{crashSound.playAudio("src/406shipscolliding.wav");}
+				catch(Exception e){System.out.println(e);}
 				player.changeHealth(-15);
 				break;
 			}
-			else
-			{
+			else{
 				crashSound.stopAudio();
 			}
 		}
@@ -107,21 +100,11 @@ public class Orbit {
 				player.changeHealth(100);
 				System.out.println("COLLECTED A STAR!!!");
 				stars.remove(star);
-
-				try
-				{
-					collectSound.playAudio("src/bicycle_bell.wav");
-				}
-				catch(Exception e)
-				{           
-					System.out.println(e);
-				}
-
+				try{collectSound.playAudio("src/bicycle_bell.wav");}
+				catch(Exception e){System.out.println(e);}
 				break;
-
 			}
-			else
-			{
+			else{
 				collectSound.stopAudio();  
 			}
 		}
@@ -129,17 +112,22 @@ public class Orbit {
 		if(player.getHealth() <= 0){
 			player.die();
 		}
+		if(stars.size()  == 0){
+			System.out.println("YOU WIN!!!");
+			if(currentLevel < 1)
+				currentLevel++;
+		}
 		//Display 
 		gameWindow.clear();
 		gameWindow.draw(player);
 
-		
-			gameWindow.draw((ArrayList)maps.get(currentLevel));
-		
+
+		gameWindow.draw((ArrayList)maps.get(currentLevel));
+
 		for(Object star:stars){
 			((Star)star).drawStar();
 		}
-		
+
 
 
 	}
