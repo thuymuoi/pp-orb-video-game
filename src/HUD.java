@@ -19,8 +19,8 @@ public class HUD extends JFrame{
 	JPanel panel;
 	int width = 640;
 	int height = 50;
-	Color red;
-	Color green;
+	Color RED;
+	Color GREEN;
 	Graphics healthBar;
 	
 	public static void main(String[] args) {
@@ -29,12 +29,12 @@ public class HUD extends JFrame{
 	}
 
 	public HUD(){
-		red = new Color (255, 0, 0);
-		green = new Color (0, 255, 0);
+		//red = new Color (255, 0, 0);
+		//green = new Color (0, 255, 0);
 		panel = new JPanel();
-		panel.setBackground(red);
+		panel.setBackground(RED);
 		panel.setSize(width, 50);
-		healthBar.setColor(green);
+		healthBar.setColor(GREEN);
 		healthBar.drawRect(0, 0, width, height);
 		
 		add(panel);
