@@ -69,7 +69,7 @@ public class Orbit {
 		     
 		    };
 		    gameWindow.addKeyListener(listener);
-		    tickTimer = new javax.swing.Timer(17, new ActionListener() {
+		    tickTimer = new javax.swing.Timer(34, new ActionListener() {
 		          public void actionPerformed(ActionEvent e) {
 		              tick();
 		          }
