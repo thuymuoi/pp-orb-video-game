@@ -17,7 +17,7 @@ public class Orbit {
 	static GameWindow gameWindow = new GameWindow();
 	static MapLoader mapLoader = new MapLoader(gameWindow);
 	static ArrayList maps = new ArrayList();
-	static CollisionDetection collisionDetection = new CollisionDetection(player);
+	static CollisionDetection2 collisionDetection = new CollisionDetection2(player);
 	static ArrayList stars = new ArrayList();
 	/**
 	 * @param args
@@ -67,16 +67,23 @@ public class Orbit {
 		player.update(key1, key2);
 
 		for(Object line: (ArrayList)maps.get(0)){
-
 			if(collisionDetection.collideWithLine((Line) line)){
 				System.out.println("Hit Wall");
+				player.changeHealth(-15);
 				break;
 			}
 		}
-	
+		for(Object star:stars){
+			if(collisionDetection.genericCollision(new Position(((Star)star).getX(),((Star)star).getY()),10)){
+				player.changeHealth(100);
+				System.out.println("COLLECTED A STAR!!!");
+				stars.remove(star);
+			}
+		}
+		if(player.getHealth() <= 0){
+			player.die();
+		}
 		//Display 
-		System.out.println("Main= x:" + player.getMainPosition().x + " y:" + player.getMainPosition().y);
-		//System.out.println("Thrust- x:" + player.getThrustPosition().x + " y:" + player.getThrustPosition().y);
 		gameWindow.clear();
 		gameWindow.draw(player);
 
