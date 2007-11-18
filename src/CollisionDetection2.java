@@ -10,6 +10,8 @@ Player player;
 		double a = 0;
 		double hypotenuse = 0;
 		double distance = 0;
+		double incomingAngle = 0;
+		
 		Line hypo = new Line(line.getEndP(), new DPosition(player.getMainPosition().x.doubleValue(), player.getMainPosition().y.doubleValue()));
 		
 		a = line.length();
@@ -19,15 +21,13 @@ Player player;
 		if (distance > player.getRadius())//make sure we have radius for player
 			return false;
 		else {
-			if (player.getSpeed().y == 0){
-				player.setSpeedX((-1)*player.getSpeed().x);
-			}
-			
-			else{
+			try {
 			//calculate the incoming angle
-			double incomingAngle = 0;
-			incomingAngle = Math.atan(player.getSpeed().x/player.getSpeed().y);
-						
+				incomingAngle = Math.atan(player.getSpeed().x/player.getSpeed().y);
+			} catch (ArithmeticException e)
+			{
+				incomingAngle = 90;
+			}
 			//change the speed of the player according to the new coordinate.
 			double newSpeedX = 0;
 			double newSpeedY = 0;
@@ -46,8 +46,6 @@ Player player;
 			//set the new speed of the ball
 			player.setSpeedX((int)Math.round(bouncingSpeedX));
 			player.setSpeedY((int)Math.round(bouncingSpeedY));
-			
-			}
 			
 			player.update(true,false);
 			player.update(true, false);
