@@ -41,10 +41,20 @@ public class MapLoader {
 	}
 	
 	public ArrayList<Star> generateStars(String file){
-		ArrayList<Star> starList = new ArrayList<Star>();
-		starList.add(new Star(graphics, 410,400));
-		starList.add(new Star(graphics, 200,220));
-		starList.add(new Star(graphics, 320,130));
-		return starList;
+		if(file == "src/map.txt"){
+			ArrayList<Star> starList = new ArrayList<Star>();
+			starList.add(new Star(graphics, 410,400));
+			starList.add(new Star(graphics, 200,220));
+			starList.add(new Star(graphics, 320,130));
+			return starList;
+		}
+		else if(file == "src/map2.txt"){
+			ArrayList<Star> starList = new ArrayList<Star>();
+			starList.add(new Star(graphics, 410,400));
+			starList.add(new Star(graphics, 100,120));
+			starList.add(new Star(graphics, 320,130));
+			return starList;
+		}
+		return null;
 	}
 }
