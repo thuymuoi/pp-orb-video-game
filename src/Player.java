@@ -4,6 +4,7 @@ public class Player {
 	//private double speed;		//Original speed idea
 	private Position speed;
 	private double speedMagnitude;
+	private int	maxSpeed;
 	
 	//default constructor
 	public Player () {
@@ -11,6 +12,8 @@ public class Player {
 		
 		speed = new Position(0,0);
 		speedMagnitude = 2;
+		maxSpeed = 6;
+		
 		mainPosition = new Position (50,150);
 		thruster = new Thruster(mainPosition);
 	}
@@ -23,6 +26,12 @@ public class Player {
 		
 			speed.x += (int)(speedMagnitude * java.lang.Math.cos(thruster.getAngle()));
 			speed.y += (int)(speedMagnitude * java.lang.Math.sin(thruster.getAngle()));
+			if(speed.x > maxSpeed){
+				speed.x = maxSpeed;	
+			}
+			if(speed.y > maxSpeed){
+				speed.y = maxSpeed;
+			}
 			
 			mainPosition.x -= speed.x;
 			mainPosition.y -= speed.y;
