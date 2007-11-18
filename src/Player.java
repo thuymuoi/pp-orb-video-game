@@ -16,7 +16,7 @@ public class Player {
 		speedMagnitude = 2;
 		maxSpeed = 4;
 		
-		mainPosition = new Position (50,150);
+		mainPosition = new Position (100,150);
 		thruster = new Thruster(mainPosition);
 		
 		radius = 14;

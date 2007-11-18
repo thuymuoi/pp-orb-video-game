@@ -17,6 +17,7 @@ public class Orbit {
 	static GameWindow gameWindow = new GameWindow();
 	static MapLoader mapLoader = new MapLoader();
 	static ArrayList maps = new ArrayList();
+	static CollisionDetection collisionDetection = new CollisionDetection(player);
 	/**
 	 * @param args
 	 */
@@ -28,7 +29,9 @@ public class Orbit {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
+		Star star1 = new Star(gameWindow.getGraphics(),250,250);
+		star1.drawStar();
+		
 		//Input
 		KeyListener listener = new KeyListener() {
 		      public void keyPressed(KeyEvent e) {
@@ -63,14 +66,16 @@ public class Orbit {
 	public static void tick(){
 		//Update
 		player.update(key1, key2);
+		for(Object line: (ArrayList)maps.get(0)){
+			collisionDetection.collideWithLine((Line) line);
+		}
 	
 		//Display 
 		//System.out.println("Main- x:" + player.getMainPosition().x + " y:" + player.getMainPosition().y);
 		//System.out.println("Thrust- x:" + player.getThrustPosition().x + " y:" + player.getThrustPosition().y);
 		gameWindow.clear();
 		gameWindow.draw(player);
-		Star star1 = new Star(gameWindow.getGraphics(),250,250);
-		star1.drawStar();
+
 		for(Object lineList: maps){
 			gameWindow.draw((ArrayList<Line>)lineList);
 		}
