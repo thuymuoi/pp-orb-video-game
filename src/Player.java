@@ -44,20 +44,34 @@ public class Player {
 				speed.y = maxSpeed*-1;
 			}
 		
-			mainPosition.x -= speed.x;
-			mainPosition.y -= speed.y;
+			if(slow){
+				mainPosition.x -= speed.x/2;
+				mainPosition.y -= speed.y/2;
+			}
+			else {
+				mainPosition.x -= speed.x;
+				mainPosition.y -= speed.y;
+			}
 			thruster.updatePosition(mainPosition);
 		}
 		else {
-			mainPosition.x -= speed.x;
-			mainPosition.y -= speed.y;
+			if(slow){
+				mainPosition.x -= speed.x/2;
+				mainPosition.y -= speed.y/2;
+			}
+			else {
+				mainPosition.x -= speed.x;
+				mainPosition.y -= speed.y;
+			}
 			thruster.updateSlowAnglePosition(mainPosition);
 		}
 		
+		/*
 		if(slow){
 			mainPosition = new Position (100,150);
+			
 		}
-		
+		*/
 		/*
 		if(slow){
 			speed.x = java.lang.Math.round(((float)speed.x)/2);
@@ -65,6 +79,10 @@ public class Player {
 		}
 		*/
 		counter++;	
+	}
+	
+	public void setMainPosition(int x, int y){
+		mainPosition = new Position(x,y);
 	}
 	
 	public void setSpeedX(int newSpeed){
