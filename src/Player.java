@@ -14,7 +14,7 @@ public class Player {
 	public Player () {
 		speed = new Position(0,0);
 		speedMagnitude = 2;
-		maxSpeed = 1;
+		maxSpeed = 2;
 		
 		mainPosition = new Position (100,150);
 		thruster = new Thruster(mainPosition);
@@ -26,7 +26,7 @@ public class Player {
 	
 	public void update(Boolean thrust, Boolean slow){	
 		if(thrust){
-			if((counter % 4)==0){
+			if((counter % 3)==0){
 				speed.x += (int)(speedMagnitude * java.lang.Math.cos(thruster.getAngle()));
 				speed.y += (int)(speedMagnitude * java.lang.Math.sin(thruster.getAngle()));
 			}
@@ -128,7 +128,7 @@ public class Player {
 		//default constructor
 		public Thruster(Position orbit){
 			angle = 0;
-			angleChange = 0.2;
+			angleChange = 0.5;
 			thrustPosition = new Position((int)(orbit.x + distance* java.lang.Math.cos(angle)),(int)(orbit.y + distance*java.lang.Math.sin(angle)));
 			distance = 15;
 		}
