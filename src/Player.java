@@ -156,5 +156,8 @@ public class Player {
 		
 	}//end Thruster class
 
-
+	public void die(){
+		System.out.println("GAME OVER");
+		
+	}
 }
