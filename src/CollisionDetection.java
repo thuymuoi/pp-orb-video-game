@@ -26,6 +26,24 @@ public class CollisionDetection {
 	
 	
 	/*
+	 * object center: c
+object speed vector: speedv
+line ends points: pt1, pt2
+
+line unit vector: wallVec = (pt2 - pt1)/(length(pt1,pt2));
+
+line normal vector: wallNormal =  t/2 - c
+
+t: wallVec *dot-product* speedv
+n: wallNormal *dot-product* speedv
+
+vt: wallVec *cross-product* t
+vn: wallNormal *cross-product* (-n)
+
+speedv = new Vector(1, 0).dot(vn) + new Vector(1, 0).dot(vt);
+speedv = new Vector(0, 1).dot(vn) + new Vector(0, 1).dot(vt);
+
+	 * 
 	public double bouncingAngle (Position a1 , Position a2, Position b, double radius, double angle ){
 		double a = 0;
 		double hypotenuse = 0;
