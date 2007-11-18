@@ -74,7 +74,7 @@ public class Orbit {
 		}
 	
 		//Display 
-		//System.out.println("Main- x:" + player.getMainPosition().x + " y:" + player.getMainPosition().y);
+		System.out.println("Main= x:" + player.getMainPosition().x + " y:" + player.getMainPosition().y);
 		//System.out.println("Thrust- x:" + player.getThrustPosition().x + " y:" + player.getThrustPosition().y);
 		gameWindow.clear();
 		gameWindow.draw(player);
