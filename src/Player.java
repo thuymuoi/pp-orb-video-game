@@ -95,8 +95,8 @@ public class Player {
 		return thruster.getPosition();	
 	}
 
-	public Thruster getThruster(){
-		return thruster;
+	public double getThrusterAngle(){
+		return thruster.getAngle();
 	}
 	
 	public void changeHealth(int change){
