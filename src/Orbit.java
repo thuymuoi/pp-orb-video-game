@@ -1,3 +1,7 @@
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Polygon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -5,7 +9,6 @@ import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
 import javax.swing.Timer;
 
 
@@ -18,10 +21,11 @@ public class Orbit {
 	static MapLoader mapLoader = new MapLoader(gameWindow);
 	static ArrayList maps = new ArrayList();
 	static CollisionDetection2 collisionDetection = new CollisionDetection2(player);
-	static ArrayList stars = new ArrayList();
+	static ArrayList<Star> stars = new ArrayList<Star>();
 	static Sound crashSound = new Sound();
 	static Sound thrustSound = new Sound();
 	static Sound collectSound = new Sound();
+	static Polygon level1 = new Polygon();
 	static int currentLevel = 0;
 
 	/**
@@ -119,21 +123,30 @@ public class Orbit {
 				stars = mapLoader.generateStars("src/map2.txt");
 				player.setMainPosition(100, 150);
 			}
-			
+
 		}
 		//Display 
 		gameWindow.clear();
 		gameWindow.draw(player);
 
 
-		gameWindow.draw((ArrayList)maps.get(currentLevel));
+		/*for(Object lineList: maps){
+			gameWindow.draw((ArrayList<Line>)lineList);
+		}*/
 
-		for(Object star:stars){
-			((Star)star).drawStar();
+
+		//Graphics mapGraphics = new Graphics2D();
+		gameWindow.getGraphics().setColor(Color.GREEN);
+		//System.out.println(gameWindow.getGraphics().getColor());
+		gameWindow.getGraphics().drawPolygon(mapLoader.getPolygon(currentLevel));
+
+		for(Star star:stars){
+			star.drawStar();
 		}
 
-
-
-	}
+	}	
 
 }
+
+
+
