@@ -31,6 +31,7 @@ public class Orbit {
 			e1.printStackTrace();
 		}
 		stars = mapLoader.generateStars();
+		player.changeHealth(100);
 		
 		//Input
 		KeyListener listener = new KeyListener() {
@@ -94,6 +95,7 @@ public class Orbit {
 				stars.remove(star);
 			}
 		}
+		System.out.println("Health: " + player.getHealth());
 		if(player.getHealth() <= 0){
 			player.die();
 		}

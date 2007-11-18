@@ -6,7 +6,7 @@ public class Player {
 	private double radius;
 	private int	maxSpeed;
 	private int counter;
-	private int health;
+	private int health = 0;
 	private boolean alive;
 	//asdf
 	
@@ -110,10 +110,10 @@ public class Player {
 		}
 		
 		//For health.
-		if (change > 0 && health < 20){
+		if (change > 0 && health < 100){
 			health += change;
-			if (health > 20) {
-				health = 20;
+			if (health > 100) {
+				health = 100;
 			}
 		}
 	}
