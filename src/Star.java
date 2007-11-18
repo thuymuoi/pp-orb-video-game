@@ -13,6 +13,8 @@ public class Star {
 	
 	public Star(Graphics graphics, int x, int y){
 		this.graphics = graphics;
+		bi = null;
+		f = null;
 		this.x = x;
 		this.y = y;
 	}
