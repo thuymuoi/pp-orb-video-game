@@ -1,3 +1,5 @@
+import java.lang.Math.*;
+
 public class Player {
 	private Position mainPosition;  //Position of main ship
 	private Thruster thruster;		//Thruster object for ship
@@ -9,7 +11,7 @@ public class Player {
 	public Player () {
 		speed = new Position(0,0);
 		speedMagnitude = 2;
-		maxSpeed = 1;
+		maxSpeed = 6;
 		
 		mainPosition = new Position (50,150);
 		thruster = new Thruster(mainPosition);
@@ -22,8 +24,14 @@ public class Player {
 			if(speed.x > maxSpeed){
 				speed.x = maxSpeed;	
 			}
+			else if(speed.x < maxSpeed*(-1)){
+				speed.x = maxSpeed*-1;
+			}
 			if(speed.y > maxSpeed){
 				speed.y = maxSpeed;
+			}
+			else if(speed.y < maxSpeed*(-1)){
+				speed.y = maxSpeed*-1;
 			}
 		
 			mainPosition.x -= speed.x;
