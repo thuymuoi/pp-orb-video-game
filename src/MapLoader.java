@@ -1,3 +1,4 @@
+import java.awt.Graphics;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -6,8 +7,12 @@ import java.util.ArrayList;
 
 public class MapLoader {
 	ArrayList lineList = new ArrayList();
-	public ArrayList<Line> readFile() throws IOException
-	{
+	Graphics graphics;
+	public MapLoader(GameWindow gameWindow) {
+		graphics = gameWindow.getGraphics();
+	}
+
+	public ArrayList<Line> readFile() throws IOException{
 		BufferedReader input = new BufferedReader(new FileReader("src/map.txt"));
 		double x;
 		double y;
@@ -33,5 +38,12 @@ public class MapLoader {
 		input.close();
 		return lineList;
 	}
-
+	
+	public ArrayList<Star> generateStars(){
+		ArrayList<Star> starList = new ArrayList<Star>();
+		starList.add(new Star(graphics, 100,250));
+		starList.add(new Star(graphics, 200,220));
+		starList.add(new Star(graphics, 590,300));
+		return starList;
+	}
 }

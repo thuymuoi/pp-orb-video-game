@@ -15,9 +15,10 @@ public class Orbit {
 	static Boolean key2 = false;
 	static Timer tickTimer;
 	static GameWindow gameWindow = new GameWindow();
-	static MapLoader mapLoader = new MapLoader();
+	static MapLoader mapLoader = new MapLoader(gameWindow);
 	static ArrayList maps = new ArrayList();
 	static CollisionDetection collisionDetection = new CollisionDetection(player);
+	static ArrayList stars = new ArrayList();
 	/**
 	 * @param args
 	 */
@@ -26,11 +27,9 @@ public class Orbit {
 		try {
 			maps.add(mapLoader.readFile());
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		Star star1 = new Star(gameWindow.getGraphics(),250,250);
-		star1.drawStar();
+		stars = mapLoader.generateStars();
 		
 		//Input
 		KeyListener listener = new KeyListener() {
@@ -84,6 +83,10 @@ public class Orbit {
 		for(Object lineList: maps){
 			gameWindow.draw((ArrayList<Line>)lineList);
 		}
+		for(Object star:stars){
+			((Star)star).drawStar();
+		}
+		
 
 
 	}
