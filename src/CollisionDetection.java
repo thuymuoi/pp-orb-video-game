@@ -18,12 +18,14 @@ public class CollisionDetection {
 		
 		if (distance > player.getRadius())//make sure we have radius for player
 			return false;
-		else
-			return true;
+		else {
+			
+			return true;	
+		}
 	}
 	
 	
-	
+	/*
 	public double bouncingAngle (Position a1 , Position a2, Position b, double radius, double angle ){
 		double a = 0;
 		double hypotenuse = 0;
@@ -45,4 +47,5 @@ public class CollisionDetection {
 		else
 			return 0;
 	}
+	*/
 }
