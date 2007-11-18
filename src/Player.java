@@ -3,10 +3,12 @@ public class Player {
 	private Thruster thruster;		//Thruster object for ship
 	private Position speed;
 	private double speedMagnitude;
+	private double radius;
 	private int	maxSpeed;
 	private int counter;
 	private int health;
 	private boolean alive;
+	
 	
 	//default constructor
 	public Player () {
@@ -17,8 +19,10 @@ public class Player {
 		mainPosition = new Position (50,150);
 		thruster = new Thruster(mainPosition);
 		
+		radius = 14;
 		counter = 0;
 	}
+	
 	
 	public void update(Boolean thrust, Boolean slow){	
 		if(thrust){
@@ -65,6 +69,10 @@ public class Player {
 	
 	public Position getMainPosition(){
 		return mainPosition;		
+	}
+	
+	public double getRadius(){
+		return radius;
 	}
 	
 	public int getHealth(){
