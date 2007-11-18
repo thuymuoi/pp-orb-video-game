@@ -45,8 +45,8 @@ public class Player {
 			}
 		
 			if(slow){
-				mainPosition.x -= speed.x/2;
-				mainPosition.y -= speed.y/2;
+				mainPosition.x -= Math.ceil(speed.x/2);
+				mainPosition.y -= Math.ceil(speed.y/2);
 			}
 			else {
 				mainPosition.x -= speed.x;
@@ -177,7 +177,7 @@ public class Player {
 
 	public void die(){
 		System.out.println("GAME OVER");
-		update(false,true); //hack to simulate dieing
+		setMainPosition(100,150); //hack to simulate dieing
 		changeHealth(100);
 	}
 }
