@@ -63,7 +63,7 @@ public class Player {
 		}
 
 		public void updateAnglePosition(Position orbit){
-			angle += 1;
+			angle += 0.1;
 			thrustPosition = new Position((int)(orbit.x + distance* java.lang.Math.cos(angle)),(int)(orbit.y + distance*java.lang.Math.sin(angle)));					
 		}
 		
