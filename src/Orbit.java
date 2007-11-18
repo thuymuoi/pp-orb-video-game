@@ -22,6 +22,7 @@ public class Orbit {
 	static Sound crashSound = new Sound();
 	static Sound thrustSound = new Sound();
 	static Sound collectSound = new Sound();
+	static int currentLevel = 0;
 	
 	/**
 	 * @param args
@@ -81,7 +82,7 @@ public class Orbit {
 		//Update
 		player.update(key1, key2);
 
-		for(Object line: (ArrayList)maps.get(0)){
+		for(Object line: (ArrayList)maps.get(currentLevel)){
 			if(collisionDetection.collideWithLine((Line) line)){
 				System.out.println("Hit Wall");
 				try
@@ -132,9 +133,9 @@ public class Orbit {
 		gameWindow.clear();
 		gameWindow.draw(player);
 
-		for(Object lineList: maps){
-			gameWindow.draw((ArrayList<Line>)lineList);
-		}
+		
+			gameWindow.draw((ArrayList)maps.get(currentLevel));
+		
 		for(Object star:stars){
 			((Star)star).drawStar();
 		}
