@@ -21,10 +21,10 @@ public class Star {
 	
 	public void drawStar(){
 		try {
-			File f = new File("Star.jpg");
+			File f = new File("src/Star.jpg");
 			BufferedImage bi = ImageIO.read(f); 
 		} catch (IOException e){
-			
+			System.out.println("asdf");
 		}
         graphics.drawImage(bi, x, y, null);
 	}
