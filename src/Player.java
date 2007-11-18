@@ -55,7 +55,7 @@ public class Player {
 		}
 		
 		if(slow){
-			mainPosition = new Position (50,150);
+			mainPosition = new Position (100,150);
 		}
 		
 		/*
@@ -95,6 +95,10 @@ public class Player {
 		return thruster.getPosition();	
 	}
 
+	public Thruster getThruster(){
+		return thruster;
+	}
+	
 	public void changeHealth(int change){
 		//For damages.  Checking if the damage is greater than the shields.
 		if (change < 0 && -change <= health){
