@@ -159,6 +159,7 @@ public class Player {
 
 	public void die(){
 		System.out.println("GAME OVER");
-		
+		update(false,true); //hack to simulate dieing
+		changeHealth(100);
 	}
 }
