@@ -9,15 +9,19 @@ public class Line {
 		endP = new Position();
 	}
 	
-	public boolean collide (Position a1, Position a2, Position b){
+	public boolean collide (Position a1, Position a2, Position b, double radius){
 		double a = 0;
 		double hypotenuse = 0;
-		double height = 0;
+		double distance = 0;
 		
-	
+		a = length(a1,a2);
+		hypotenuse = length(a1,b);
+		distance = Math.sqrt(Math.pow(hypotenuse,2)- Math.pow(a,2));
 		
-		
-		return false;
+		if (distance > radius)
+			return false;
+		else
+			return true;
 	}
 	
 	public double length (Position a, Position b) {
