@@ -19,6 +19,7 @@ public class Orbit {
 	static ArrayList maps = new ArrayList();
 	static CollisionDetection2 collisionDetection = new CollisionDetection2(player);
 	static ArrayList stars = new ArrayList();
+	static Sound myOrb = new Sound();
 	/**
 	 * @param args
 	 */
@@ -69,8 +70,21 @@ public class Orbit {
 		for(Object line: (ArrayList)maps.get(0)){
 			if(collisionDetection.collideWithLine((Line) line)){
 				System.out.println("Hit Wall");
+				try
+				{
+				
+				myOrb.playAudio("src/SpacewarSongTest.wav");
+				}
+				catch(Exception e)
+				{           
+					System.out.println(e);
+				}
 				player.changeHealth(-15);
 				break;
+			}
+			else
+			{
+				myOrb.stopAudio();
 			}
 		}
 		for(Object star:stars){
