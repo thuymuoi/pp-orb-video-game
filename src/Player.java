@@ -67,8 +67,12 @@ public class Player {
 		counter++;	
 	}
 	
-	public void setSpeed(Position newSpeed){
-		speed = newSpeed;
+	public void setSpeedX(int newSpeed){
+		speed.x = newSpeed;
+	}
+	
+	public void setSpeedY(int newSpeed){
+		speed.y = newSpeed;
 	}
 	
 	public Position getSpeed(){
