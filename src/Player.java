@@ -32,16 +32,29 @@ public class Player {
 			if(speed.y > maxSpeed){
 				speed.y = maxSpeed;
 			}
+		
+			if(slow){
+				speed.x = java.lang.Math.round(((float)speed.x)/2);
+				speed.y = java.lang.Math.round(((float)speed.y)/2);
+			}
 			
 			mainPosition.x -= speed.x;
 			mainPosition.y -= speed.y;
 			thruster.updatePosition(mainPosition);
 		}
 		else {
+			if(slow){
+				speed.x = java.lang.Math.round(((float)speed.x)/2);
+				speed.y = java.lang.Math.round(((float)speed.y)/2);
+			}	
+			
 			mainPosition.x -= speed.x;
 			mainPosition.y -= speed.y;
-			thruster.updateAnglePosition(mainPosition);
+			thruster.updateSlowAnglePosition(mainPosition);
 		}
+		
+
+		
 			
 	}
 	
@@ -57,11 +70,13 @@ public class Player {
 	private class Thruster {
 		private Position thrustPosition;
 		private double angle;
+		private double angleChange;
 		private double distance;
 		
 		//default constructor
 		public Thruster(Position orbit){
 			angle = 0;
+			angleChange = 0.2;
 			thrustPosition = new Position((int)(orbit.x + distance* java.lang.Math.cos(angle)),(int)(orbit.y + distance*java.lang.Math.sin(angle)));
 			distance = 15;
 		}
@@ -79,7 +94,12 @@ public class Player {
 		}
 
 		public void updateAnglePosition(Position orbit){
-			angle += 0.2;
+			angle += angleChange;
+			thrustPosition = new Position((int)(orbit.x + distance* java.lang.Math.cos(angle)),(int)(orbit.y + distance*java.lang.Math.sin(angle)));					
+		}
+		
+		public void updateSlowAnglePosition(Position orbit){
+			angle += angleChange/2;
 			thrustPosition = new Position((int)(orbit.x + distance* java.lang.Math.cos(angle)),(int)(orbit.y + distance*java.lang.Math.sin(angle)));					
 		}
 		
