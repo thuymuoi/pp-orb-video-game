@@ -66,7 +66,9 @@ public class Orbit {
 	public static void tick(){
 		//Update
 		player.update(key1, key2);
+
 		for(Object line: (ArrayList)maps.get(0)){
+
 			if(collisionDetection.collideWithLine((Line) line)){
 				System.out.println("Hit Wall");
 				break;
