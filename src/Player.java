@@ -107,6 +107,7 @@ public class Player {
 		//If damage is greater than shields, then take remainder off of health.
 		else if (change < 0 && -change > health){
 			alive = false;
+			health = 0;
 		}
 		
 		//For health.

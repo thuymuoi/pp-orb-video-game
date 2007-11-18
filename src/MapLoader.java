@@ -41,9 +41,9 @@ public class MapLoader {
 	
 	public ArrayList<Star> generateStars(){
 		ArrayList<Star> starList = new ArrayList<Star>();
-		starList.add(new Star(graphics, 100,250));
+		starList.add(new Star(graphics, 410,400));
 		starList.add(new Star(graphics, 200,220));
-		starList.add(new Star(graphics, 590,300));
+		starList.add(new Star(graphics, 320,130));
 		return starList;
 	}
 }

@@ -89,10 +89,11 @@ public class Orbit {
 			}
 		}
 		for(Object star:stars){
-			if(collisionDetection.genericCollision(new Position(((Star)star).getX(),((Star)star).getY()),10)){
+			if(collisionDetection.genericCollision(new Position(((Star)star).getX(),((Star)star).getY()),15)){
 				player.changeHealth(100);
 				System.out.println("COLLECTED A STAR!!!");
 				stars.remove(star);
+				break;
 			}
 		}
 		System.out.println("Health: " + player.getHealth());
