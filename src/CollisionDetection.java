@@ -22,10 +22,12 @@ public class CollisionDetection {
 			//Implement player bouncing
 			DPosition wallVector = new DPosition((line.getStartP().x - line.getEndP().x)/line.length(), (line.getStartP().y - line.getEndP().y)/line.length());
 			DPosition wallNormal = new DPosition((line.getStartP().x /2 - (double)player.getMainPosition().x)/length(line.getStartP(), player.getMainPosition()), (line.getStartP().y /2 - (double)player.getMainPosition().y)/length(line.getStartP(), player.getMainPosition()));
+			//System.out.println((line.getStartP().y /2 - (double)player.getMainPosition().y)/length(line.getStartP(), player.getMainPosition()));
 			
 			double t = dotProduct(wallVector, player.getMainPosition());
 			double n = dotProduct(wallNormal, player.getMainPosition());
-	
+			//System.out.println(n);
+			
 			DPosition vt = new DPosition(wallVector.x * t, wallVector.y * t);
 			DPosition vn = new DPosition(wallNormal.x * (-n), wallNormal.y * (-n));
 			
@@ -43,6 +45,7 @@ public class CollisionDetection {
 	}
 	
 	public double dotProduct(DPosition vec1, Position vec2){
+		//System.out.println(vec1.x + "\t" + vec2.x + "\t" + vec1.x*(double)vec2.x);
 		return vec1.x * (double)vec2.x + vec1.y * (double)vec2.y;
 	}
 	
