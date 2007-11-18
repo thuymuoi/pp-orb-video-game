@@ -29,8 +29,10 @@ public class CollisionDetection {
 			DPosition vt = new DPosition(wallVector.x * t, wallVector.y * t);
 			DPosition vn = new DPosition(wallNormal.x * (-n), wallNormal.y * (-n));
 			
-			player.setSpeedX((int)Math.round(dotProduct(new DPosition(1,0), vn) + dotProduct(new DPosition(1,0), vt)));
-			player.setSpeedY((int)Math.round(dotProduct(new DPosition(0,1), vn) + dotProduct(new DPosition(0,1), vt)));
+			Long temp = new Long((Math.round(dotProduct(new DPosition(1,0), vn) + dotProduct(new DPosition(1,0), vt))));
+			player.setSpeedX(temp.intValue());
+			temp = new Long(Math.round(dotProduct(new DPosition(0,1), vn) + dotProduct(new DPosition(0,1), vt)));
+			player.setSpeedY(temp.intValue());
 			return true;	
 			
 		}
