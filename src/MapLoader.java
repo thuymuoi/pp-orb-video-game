@@ -14,6 +14,7 @@ public class MapLoader {
 
 	public ArrayList<Line> readFile(String filename) throws IOException{
 		BufferedReader input = new BufferedReader(new FileReader(filename));
+		lineList = new ArrayList();
 		double x;
 		double y;
 		double oldx=-96822.96822;
@@ -39,7 +40,7 @@ public class MapLoader {
 		return lineList;
 	}
 	
-	public ArrayList<Star> generateStars(){
+	public ArrayList<Star> generateStars(String file){
 		ArrayList<Star> starList = new ArrayList<Star>();
 		starList.add(new Star(graphics, 410,400));
 		starList.add(new Star(graphics, 200,220));
