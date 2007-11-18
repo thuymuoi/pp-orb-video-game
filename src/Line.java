@@ -1,31 +1,28 @@
 import java.lang.*;
 
 public class Line {
-	private Position startP;
-	private Position endP;
+	private DPosition startP;
+	private DPosition endP;
 	
 	public Line(){
-		startP = new Position();
-		endP = new Position();
+		startP = new DPosition();
+		endP = new DPosition();
 	}
 	
-	public boolean collide (Position a1, Position a2, Position b, double radius){
-		double a = 0;
-		double hypotenuse = 0;
-		double distance = 0;
-		
-		a = length(a1,a2);
-		hypotenuse = length(a1,b);
-		distance = Math.sqrt(Math.pow(hypotenuse,2)- Math.pow(a,2));
-		
-		if (distance > radius)
-			return false;
-		else
-			return true;
+	public Line (DPosition startP, DPosition endP){
+		this.startP = startP;
+		this.endP = endP;
+	}
+
+	public DPosition getStartP(){
+		return startP;
 	}
 	
-	public double length (Position a, Position b) {
-		return Math.sqrt(Math.pow((double)b.x - (double)a.x,2) + Math.pow((double)b.y - (double)a.y,2));
+	public DPosition getEndP(){
+		return endP;
 	}
 	
+	public double length () {
+		return Math.sqrt(Math.pow(startP.x - endP.x,2) + Math.pow(startP.y - endP.y,2));
+	}
 }
