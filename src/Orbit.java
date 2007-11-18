@@ -26,8 +26,7 @@ public class Orbit {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		
+
 		//Input
 		KeyListener listener = new KeyListener() {
 		      public void keyPressed(KeyEvent e) {
@@ -68,6 +67,8 @@ public class Orbit {
 		//System.out.println("Thrust- x:" + player.getThrustPosition().x + " y:" + player.getThrustPosition().y);
 		gameWindow.clear();
 		gameWindow.draw(player);
+		Star star1 = new Star(gameWindow.getGraphics(),100,100);
+		star1.drawStar();
 
 		
 	}
