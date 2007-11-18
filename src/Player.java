@@ -22,8 +22,14 @@ public class Player {
 			if(speed.x > maxSpeed){
 				speed.x = maxSpeed;	
 			}
+			else if(speed.x < maxSpeed*(-1)){
+				speed.x = maxSpeed*-1;
+			}
 			if(speed.y > maxSpeed){
 				speed.y = maxSpeed;
+			}
+			else if(speed.y < maxSpeed*(-1)){
+				speed.y = maxSpeed*-1;
 			}
 		
 			mainPosition.x -= speed.x;
