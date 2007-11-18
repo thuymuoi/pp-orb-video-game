@@ -5,6 +5,8 @@ public class Player {
 	private double speedMagnitude;
 	private int	maxSpeed;
 	private int counter;
+	private int health;
+	private boolean alive;
 	
 	//default constructor
 	public Player () {
@@ -65,10 +67,32 @@ public class Player {
 		return mainPosition;		
 	}
 	
+	public int getHealth(){
+		return health;
+	}
+	
 	public Position getThrustPosition(){
 		return thruster.getPosition();	
 	}
-	
+
+	public void changeHealth(int change){
+		//For damages.  Checking if the damage is greater than the shields.
+		if (change < 0 && -change <= health){
+			health += change;
+		}
+		//If damage is greater than shields, then take remainder off of health.
+		else if (change < 0 && -change > health){
+			alive = false;
+		}
+		
+		//For health.
+		if (change > 0 && health < 20){
+			health += change;
+			if (health > 20) {
+				health = 20;
+			}
+		}
+	}
 	
 	private class Thruster {
 		private Position thrustPosition;
