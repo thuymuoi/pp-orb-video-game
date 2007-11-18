@@ -67,6 +67,14 @@ public class Player {
 		counter++;	
 	}
 	
+	public void setSpeed(Position newSpeed){
+		speed = newSpeed;
+	}
+	
+	public Position getSpeed(){
+		return speed;
+	}
+	
 	public Position getMainPosition(){
 		return mainPosition;		
 	}
