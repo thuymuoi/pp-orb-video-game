@@ -12,8 +12,8 @@ public class MapLoader {
 		graphics = gameWindow.getGraphics();
 	}
 
-	public ArrayList<Line> readFile() throws IOException{
-		BufferedReader input = new BufferedReader(new FileReader("src/map.txt"));
+	public ArrayList<Line> readFile(String filename) throws IOException{
+		BufferedReader input = new BufferedReader(new FileReader(filename));
 		double x;
 		double y;
 		double oldx=-96822.96822;
