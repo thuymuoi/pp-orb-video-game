@@ -128,7 +128,7 @@ public class Player {
 		//default constructor
 		public Thruster(Position orbit){
 			angle = 0;
-			angleChange = 0.5;
+			angleChange = 0.35;
 			thrustPosition = new Position((int)(orbit.x + distance* java.lang.Math.cos(angle)),(int)(orbit.y + distance*java.lang.Math.sin(angle)));
 			distance = 15;
 		}
