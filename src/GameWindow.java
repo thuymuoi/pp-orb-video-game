@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -17,6 +18,7 @@ public class GameWindow extends JFrame {
 		setContentPane(mainPanel);
 		setVisible(true);
 		setSize(new Dimension(640,480));
+		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		graphics = getGraphics();
 	}
