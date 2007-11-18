@@ -8,16 +8,17 @@ import javax.swing.Timer;
 
 
 public class Orbit {
-	static Player player;
+	static Player player = new Player();
 	static Boolean key1 = false;
 	static Boolean key2 = false;
 	static Timer tickTimer;
+	static GameWindow gameWindow = new GameWindow();
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		//Initialization
-		GameWindow gameWindow = new GameWindow();
+		
 		
 		
 		//Input
@@ -27,6 +28,7 @@ public class Orbit {
 		    	  	case KeyEvent.VK_SPACE: key1 = true; break;
 		    	  	case KeyEvent.VK_C: key2 = true; break;
 		    	  }
+		    	  //System.out.println("Key Down");
 		      }
 
 		      public void keyReleased(KeyEvent e) {
@@ -34,11 +36,10 @@ public class Orbit {
 		    	  	case KeyEvent.VK_SPACE: key1 = false; break;
 		    	  	case KeyEvent.VK_C: key2 = false; break;
 		    	  }
+		    	  //System.out.println("Key Up");
 		      }
 
-		      public void keyTyped(KeyEvent e) {
-		      
-		      }
+		      public void keyTyped(KeyEvent e) {}
 
 		     
 		    };
@@ -53,9 +54,14 @@ public class Orbit {
 	
 	public static void tick(){
 		//Update
+		player.update(key1, key2);
 	
-		//Display
-		System.out.println("Key 1 is :" + key1 + "Key 2 is :" + key2);
+		//Display 
+		//System.out.println("Main- x:" + player.getMainPosition().x + " y:" + player.getMainPosition().y);
+		//System.out.println("Thrust- x:" + player.getThrustPosition().x + " y:" + player.getThrustPosition().y);
+		gameWindow.clear();
+		gameWindow.draw(player);
+
 		
 	}
 
