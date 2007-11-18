@@ -9,6 +9,7 @@ public class Star {
 	private BufferedImage bi;
 	private int x;
 	private int y;
+	private boolean asdf;
 	
 	public Star(Graphics graphics, int x, int y){
 		this.graphics = graphics;
@@ -24,7 +25,8 @@ public class Star {
 			System.out.println("asdf");
 		}
 		graphics = bi.getGraphics();
-        graphics.drawImage(bi, x, y, null);
+        asdf = graphics.drawImage(bi, x, y, null);
+        System.out.println(asdf);
 	}
 	
 }
