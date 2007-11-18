@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class MapLoader {
 	ArrayList lineList = new ArrayList();
-	public void readFile() throws IOException
+	public ArrayList<Line> readFile() throws IOException
 	{
 		BufferedReader input = new BufferedReader(new FileReader("src/map.txt"));
 		double x;
@@ -15,7 +15,7 @@ public class MapLoader {
 		double oldy=-96822.96822;
 		while(true){
 			String line = input.readLine();
-			
+
 			if(line == null){
 				break;
 			}
@@ -23,15 +23,15 @@ public class MapLoader {
 			x = Double.valueOf(parts[1].trim());
 			y = Double.valueOf(parts[2].trim());
 			if(oldx != -96822.96822 && oldy != -96822.96822){
-				System.out.println("x:" + (x+116) + " y:" + (y+175)+"oldx:" + (oldx+116) + " oldy:" + (oldy+175));
-				lineList.add(new Line(new DPosition(oldx,oldy),new DPosition(x,y)));
+				lineList.add(new Line(new DPosition((oldx+120)*5,(oldy+205)*2.3),new DPosition((x+120)*5,(y+205)*2.3)));
 			}
 			oldx = x;
 			oldy = y;
 		}
 		System.out.println("Size: " + lineList.size());
-	
-	input.close();
-}
+
+		input.close();
+		return lineList;
+	}
 
 }
