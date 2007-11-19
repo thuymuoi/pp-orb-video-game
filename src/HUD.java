@@ -62,4 +62,7 @@ public class HUD extends JFrame{
 		this.health.setSize(new Dimension((int)((health/100)*(double)width), height));
 	}
 	
+	public void restart(){
+		health.setSize(new Dimension(width, height));
+	}
 }
