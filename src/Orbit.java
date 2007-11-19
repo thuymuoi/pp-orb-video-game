@@ -81,6 +81,8 @@ public class Orbit {
 				tick();
 			}
 		});
+		
+		welcomeScreen();
 		tickTimer.start();
 	}
 
@@ -145,6 +147,16 @@ public class Orbit {
 		}
 
 	}	
+	
+	public static void welcomeScreen(){
+		//display code
+		while(true){
+			if(key1){
+				gameWindow.clear();
+				break;
+			}
+		}
+	}
 
 }
 
