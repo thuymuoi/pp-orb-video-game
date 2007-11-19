@@ -15,7 +15,13 @@ public class MapLoader {
 	public MapLoader(GameWindow gameWindow) {
 		graphics = gameWindow.getGraphics();
 	}
-
+	/**
+	 * 
+	 * @param filename for the map to be loaded
+	 * @return an ArrayList of lines comprising the map
+	 * @throws IOException
+	 * This function loads in a map file and creates a ArrayList of lines to be returned, and also generates a polygon which it stores internally.
+	 */
 	public ArrayList<Line> readFile(String filename) throws IOException{
 		BufferedReader input = new BufferedReader(new FileReader(filename));
 		lineList = new ArrayList();
@@ -50,7 +56,11 @@ public class MapLoader {
 		input.close();
 		return lineList;
 	}
-	
+	/**
+	 * 
+	 * @param The map filename
+	 * @return A list of star objects for the appropriate map file. 
+	 */
 	public ArrayList<Star> generateStars(String file){
 		if(file == "src/map.txt"){
 			ArrayList<Star> starList = new ArrayList<Star>();
@@ -84,7 +94,12 @@ public class MapLoader {
 		}
 		return null;
 	}
-
+	
+	/**
+	 * 
+	 * @param currentLevel
+	 * @return The appropriate polygon object representing the current level
+	 */
 	public Polygon getPolygon(int currentLevel) {
 		return polygons.get(currentLevel);
 	}
