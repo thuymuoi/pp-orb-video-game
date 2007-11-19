@@ -76,6 +76,10 @@ public class GameWindow extends JFrame {
 			graphics.drawLine((int)(line.getStartP().x), (int)(line.getStartP().y), (int)(line.getEndP().x), (int)(line.getEndP().y));
 		}
 	}
+	/**
+	 * Draws the Title Screen
+	 *
+	 */
 	public void drawTitle(){
 		
 		BufferedImage img = null;
@@ -86,7 +90,10 @@ public class GameWindow extends JFrame {
 		}
 		graphics.drawImage(img, 0, 0, null);
 	}
-
+	/**
+	 * Draws the Win Screen
+	 *
+	 */
 	public void drawWin(){
 		
 		BufferedImage img = null;
