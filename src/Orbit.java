@@ -107,6 +107,7 @@ public class Orbit {
 		for(Object star:stars){
 			if(collisionDetection.genericCollision(new Position(((Star)star).getX(),((Star)star).getY()),10)){
 				player.changeHealth(100);
+				hud.updateHealth(player.getHealth());
 				System.out.println("COLLECTED A STAR!!!");
 				stars.remove(star);
 				try{collectSound.playAudio("src/bicycle_bell.wav");}
@@ -123,6 +124,8 @@ public class Orbit {
 			hud.restart();
 		}
 		if(stars.size()  == 0){
+			player.changeHealth(100);
+			hud.updateHealth(player.getHealth());
 			System.out.println("Level Passed!");
 			if(currentLevel == 0){
 				currentLevel++;
