@@ -26,7 +26,7 @@ public class GameWindow extends JFrame {
 		
 		double tailExtension;
 		tailExtension = Math.random() * 10; 
-		graphics.setColor(Color.BLACK);
+		graphics.setColor(Color.GREEN);
 		graphics.fillOval(player.getMainPosition().x-7, player.getMainPosition().y-7, 14, 14);
 		graphics.drawOval(player.getThrustPosition().x-2, player.getThrustPosition().y-2, 4, 4);
 		if(Orbit.key1 == true)

@@ -127,18 +127,11 @@ public class Orbit {
 		}
 		//Display 
 		gameWindow.clear();
+		
+		gameWindow.getGraphics().fillPolygon(mapLoader.getPolygon(currentLevel));
+		
 		gameWindow.draw(player);
-
-
-		/*for(Object lineList: maps){
-			gameWindow.draw((ArrayList<Line>)lineList);
-		}*/
-
-
-		//Graphics mapGraphics = new Graphics2D();
-		gameWindow.getGraphics().setColor(Color.GREEN);
-		//System.out.println(gameWindow.getGraphics().getColor());
-		gameWindow.getGraphics().drawPolygon(mapLoader.getPolygon(currentLevel));
+		
 
 		for(Star star:stars){
 			star.drawStar();
