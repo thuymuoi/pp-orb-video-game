@@ -1,21 +1,38 @@
+/**
+ * Collision Detection class
+ * Check the player have a collision with an object
+ * @author Thuy Truong
+ * University of Southern California
+ * Code for a Cause 2007
+ */
 
 public class CollisionDetection2 {
 Player player;
 	
+	//public constructor
 	public CollisionDetection2(Player p){
 		player = p;
 	}
 	
+	/** 
+	 * Boolean function to detect the collision with the wall
+	 * @param line
+	 * @return true/false
+	 */
 	public boolean collideWithLine (Line line){
 		double a = 0;
 		double hypotenuse = 0;
 		double distance = 0;
 		double incomingAngle = 0;
 		
+		//Calculate the distance of the player to one point on the line
 		Line hypo = new Line(line.getEndP(), new DPosition(player.getMainPosition().x.doubleValue(), player.getMainPosition().y.doubleValue()));
-		
-		a = line.length();
 		hypotenuse = hypo.length();
+		
+		//Calculate the length of the line
+		a = line.length();
+		
+		//Distance from the player to the line
 		distance = Math.sqrt(Math.pow(hypotenuse,2)- Math.pow(a,2)/4);
 		
 		if (distance > player.getRadius())//make sure we have radius for player
@@ -54,6 +71,13 @@ Player player;
 			return true;
 		}
 	}
+	
+	/**
+	 * Boolean function check when the player have a collision with an object at position with certain size
+	 * @param pos
+	 * @param size
+	 * @return true/false
+	 */
 	public Boolean genericCollision(Position pos, int size){
 		if(Math.abs(player.getMainPosition().x - pos.x) < size/2 + player.getRadius() && Math.abs(player.getMainPosition().y - pos.y) < size/2 + player.getRadius() ){
 			return true;
