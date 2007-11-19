@@ -17,6 +17,7 @@ public class Orbit {
 	static Boolean key1 = false;
 	static Boolean key2 = false;
 	static Timer tickTimer;
+	static Timer winTimer;
 	static GameWindow gameWindow = new GameWindow();
 	static MapLoader mapLoader = new MapLoader(gameWindow);
 	static ArrayList maps = new ArrayList();
@@ -27,6 +28,7 @@ public class Orbit {
 	static Sound collectSound = new Sound();
 	static Polygon level1 = new Polygon();
 	static int currentLevel = 0;
+	static HUD hud;
 
 	/**
 	 * @param args
@@ -42,6 +44,7 @@ public class Orbit {
 		}
 		stars = mapLoader.generateStars("src/map.txt");
 		player.changeHealth(100);
+		hud = new HUD();
 
 		//Input
 		KeyListener listener = new KeyListener() {
@@ -156,6 +159,17 @@ public class Orbit {
 				break;
 			}
 		}
+	}
+	
+	public static void winScreen(){
+		//display code
+		winTimer = new javax.swing.Timer(34, new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				gameWindow.clear();
+				welcomeScreen();
+			}
+		});
+		winTimer.start();
 	}
 
 }
