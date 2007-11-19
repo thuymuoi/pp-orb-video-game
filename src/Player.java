@@ -179,7 +179,7 @@ public class Player {
 
 	public void die(){
 		System.out.println("GAME OVER");
-		setMainPosition(100,150); //hack to simulate dieing
+		setMainPosition(110,180); //hack to simulate dieing
 		changeHealth(100);
 	}
 }
