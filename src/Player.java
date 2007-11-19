@@ -83,6 +83,8 @@ public class Player {
 	
 	public void setMainPosition(int x, int y){
 		mainPosition = new Position(x,y);
+		speed.x = 0;
+		speed.y = 0;
 	}
 	
 	public void setSpeedX(int newSpeed){
