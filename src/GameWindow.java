@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 public class GameWindow extends JFrame {
 	JPanel mainPanel;
 	Graphics graphics = null;
+		
 	public GameWindow (){
 		super("Orbit");
 		mainPanel = new JPanel();
@@ -52,6 +53,7 @@ public class GameWindow extends JFrame {
 		}
 	}
 	public void drawTitle(){
+		
 		BufferedImage img = null;
 		try {
 		    img = ImageIO.read(new File("src/Title.gif"));
@@ -62,6 +64,7 @@ public class GameWindow extends JFrame {
 	}
 
 	public void drawWin(){
+		
 		BufferedImage img = null;
 		try {
 		    img = ImageIO.read(new File("src/Win.gif"));
@@ -69,5 +72,6 @@ public class GameWindow extends JFrame {
 		catch (IOException e) {
 		}
 		graphics.drawImage(img, 0, 0, null);
+		
 	}
 }
