@@ -77,7 +77,7 @@ public class MapLoader {
 			starList.add(new Star(graphics, 410,320));
 			starList.add(new Star(graphics, 390,150));
 			starList.add(new Star(graphics, 470,167));
-			starList.add(new Star(graphics, 140,440));
+			starList.add(new Star(graphics, 140,420));
 			starList.add(new Star(graphics, 120,320));
 			starList.add(new Star(graphics, 210,400));
 			return starList;
