@@ -82,7 +82,7 @@ public class Orbit {
 				tick();
 			}
 		});
-		
+
 		welcomeScreen();
 		tickTimer.start();
 	}
@@ -90,77 +90,82 @@ public class Orbit {
 	public static void tick(){
 		//Update
 		player.update(key1, key2);
-
-		for(Object line: (ArrayList)maps.get(currentLevel)){
-			if(collisionDetection.collideWithLine((Line) line)){
-				System.out.println("Hit Wall");
-				try{crashSound.playAudio("src/bounce.wav");}
-				catch(Exception e){System.out.println(e);}
-				player.changeHealth(-15);
-				hud.updateHealth(player.getHealth());
-				break;
-			}
-			else{
-				crashSound.stopAudio();
-			}
-		}
-		for(Object star:stars){
-			if(collisionDetection.genericCollision(new Position(((Star)star).getX(),((Star)star).getY()),10)){
-				player.changeHealth(100);
-				hud.updateHealth(player.getHealth());
-				System.out.println("COLLECTED A STAR!!!");
-				stars.remove(star);
-				try{collectSound.playAudio("src/bicycle_bell.wav");}
-				catch(Exception e){System.out.println(e);}
-				break;
-			}
-			else{
-				collectSound.stopAudio();  
-			}
-		}
-		//System.out.println("Health: " + player.getHealth());
-		if(player.getHealth() <= 0){
+		if(player.getMainPosition().x <0 || player.getMainPosition().x < 0){
 			player.die();
-			hud.restart();
-		}
-		if(stars.size()  == 0){
 			player.changeHealth(100);
 			hud.updateHealth(player.getHealth());
-			System.out.println("Level Passed!");
-			if(currentLevel == 0){
-				currentLevel++;
-				stars = mapLoader.generateStars("src/map2.txt");
-				player.setMainPosition(100, 150);
+		}else{
+			for(Object line: (ArrayList)maps.get(currentLevel)){
+				if(collisionDetection.collideWithLine((Line) line)){
+					System.out.println("Hit Wall");
+					try{crashSound.playAudio("src/bounce.wav");}
+					catch(Exception e){System.out.println(e);}
+					player.changeHealth(-15);
+					hud.updateHealth(player.getHealth());
+					break;
+				}
+				else{
+					crashSound.stopAudio();
+				}
 			}
-			else if(currentLevel == 1){
-				currentLevel++;
-				stars = mapLoader.generateStars("src/map3.txt");
-				player.setMainPosition(100, 150);
-			} 
-			else if(currentLevel == 2){
-				winScreen();
+			for(Object star:stars){
+				if(collisionDetection.genericCollision(new Position(((Star)star).getX(),((Star)star).getY()),10)){
+					player.changeHealth(100);
+					hud.updateHealth(player.getHealth());
+					System.out.println("COLLECTED A STAR!!!");
+					stars.remove(star);
+					try{collectSound.playAudio("src/bicycle_bell.wav");}
+					catch(Exception e){System.out.println(e);}
+					break;
+				}
+				else{
+					collectSound.stopAudio();  
+				}
 			}
-			else {
+			//System.out.println("Health: " + player.getHealth());
+			if(player.getHealth() <= 0){
+				player.die();
+				hud.restart();
+			}
+			if(stars.size()  == 0){
+				player.changeHealth(100);
+				hud.updateHealth(player.getHealth());
 				System.out.println("Level Passed!");
+				if(currentLevel == 0){
+					currentLevel++;
+					stars = mapLoader.generateStars("src/map2.txt");
+					player.setMainPosition(100, 150);
+				}
+				else if(currentLevel == 1){
+					currentLevel++;
+					stars = mapLoader.generateStars("src/map3.txt");
+					player.setMainPosition(100, 150);
+				} 
+				else if(currentLevel == 2){
+					winScreen();
+				}
+				else {
+					System.out.println("Level Passed!");
+				}
 			}
 		}
 		//Display 
 		gameWindow.clear();
-		
+
 		gameWindow.getGraphics().fillPolygon(mapLoader.getPolygon(currentLevel));
-		
+
 		gameWindow.draw(player);
-		
+
 
 		for(Star star:stars){
 			star.drawStar();
 		}
 
 	}	
-	
+
 	public static void welcomeScreen(){
 		//display code
-		
+
 		while(true){
 			if(key1){
 				gameWindow.clear();
@@ -170,7 +175,7 @@ public class Orbit {
 			gameWindow.drawTitle();
 		}
 	}
-	
+
 	public static void winScreen(){
 		//tickTimer.stop();
 		//display code
@@ -179,11 +184,11 @@ public class Orbit {
 				System.out.println("GOT KEY");
 				gameWindow.clear();
 				key1 = false;
-				
+
 				currentLevel = 0;
 				player.setMainPosition(100, 150);
 				welcomeScreen();
-				
+
 				break;
 			}
 			gameWindow.drawWin();
@@ -199,9 +204,9 @@ public class Orbit {
 
 			}
 		});
-			
+
 		winTimer.start();
-		*/
+		 */
 	}
 
 }
