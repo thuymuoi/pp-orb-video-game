@@ -23,7 +23,7 @@ public class Star {
 		} catch (IOException e){
 			System.out.println("asdf");
 		}
-        graphics.drawImage(bi, x, y, null);
+        graphics.drawImage(bi, x-10, y-10, null);
 	}
 
 	public int getX() {
