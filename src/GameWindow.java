@@ -18,7 +18,8 @@ public class GameWindow extends JFrame {
 		setContentPane(mainPanel);
 		setVisible(true);
 		setSize(new Dimension(640,480));
-		setBackground(Color.WHITE);
+		Color earth = new Color(189, 183, 107);
+		setBackground(earth);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		graphics = getGraphics();
 	}
