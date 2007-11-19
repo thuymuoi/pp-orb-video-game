@@ -36,6 +36,7 @@ public class Orbit {
 		try {
 			maps.add(mapLoader.readFile("src/map.txt"));
 			maps.add(mapLoader.readFile("src/map2.txt"));
+			maps.add(mapLoader.readFile("src/map3.txt"));
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -112,18 +113,24 @@ public class Orbit {
 				collectSound.stopAudio();  
 			}
 		}
-		System.out.println("Health: " + player.getHealth());
+		//System.out.println("Health: " + player.getHealth());
 		if(player.getHealth() <= 0){
 			player.die();
 		}
 		if(stars.size()  == 0){
-			System.out.println("YOU WIN!!!");
-			if(currentLevel < 1){
+			System.out.println("Level Passed!");
+			if(currentLevel == 0){
 				currentLevel++;
 				stars = mapLoader.generateStars("src/map2.txt");
 				player.setMainPosition(100, 150);
 			}
-
+			else if(currentLevel == 1){
+				currentLevel++;
+				stars = mapLoader.generateStars("src/map3.txt");
+				player.setMainPosition(100, 150);
+			} else {
+				System.out.println("Level Passed!");
+			}
 		}
 		//Display 
 		gameWindow.clear();

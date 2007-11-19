@@ -26,7 +26,7 @@ public class Sound {
 		File mySoundFile = new File(fileName);
 		audioInputStream = AudioSystem.getAudioInputStream(mySoundFile);
 		audioFormat = audioInputStream.getFormat();
-		System.out.println(audioFormat);
+		//System.out.println(audioFormat);
 		DataLine.Info dataLineInfo = new DataLine.Info(SourceDataLine.class,audioFormat);
 		sourceDataLine = (SourceDataLine)AudioSystem.getLine(dataLineInfo);
 		playback = true;
