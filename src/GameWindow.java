@@ -4,7 +4,11 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
-
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -47,5 +51,23 @@ public class GameWindow extends JFrame {
 			graphics.drawLine((int)(line.getStartP().x), (int)(line.getStartP().y), (int)(line.getEndP().x), (int)(line.getEndP().y));
 		}
 	}
+	public void drawTitle(){
+		BufferedImage img = null;
+		try {
+		    img = ImageIO.read(new File("src/Title.gif"));
+		} 
+		catch (IOException e) {
+		}
+		graphics.drawImage(img, 0, 0, null);
+	}
 
+	public void drawWin(){
+		BufferedImage img = null;
+		try {
+		    img = ImageIO.read(new File("src/Win.gif"));
+		} 
+		catch (IOException e) {
+		}
+		graphics.drawImage(img, 0, 0, null);
+	}
 }
