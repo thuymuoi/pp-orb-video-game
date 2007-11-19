@@ -36,7 +36,7 @@ public class HUD extends JFrame{
 		add(panel);
 
 		health = new JPanel();
-		health.setPreferredSize(new Dimension(width,height));
+		health.setPreferredSize(new Dimension((int)(.75*(double)(width)),height));
 		health.setBackground(Color.GREEN);
 		panel.add(health);
 		
@@ -47,18 +47,18 @@ public class HUD extends JFrame{
         frame.setVisible(true);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     	
+        /*
         System.out.println(panel.getGraphics());
         healthBar = panel.getGraphics();
 		healthBar.setColor(Color.GREEN);
 		System.out.println(healthBar);
 		healthBar.fillRect(0, 0, width, height);
+		*/
 		
 	}
 	
 	public void updateHealth(int health){
-		//System.out.println("oh shoot");
-		healthBar.clearRect(0, 0, width, height);
-		healthBar.fillRect(0, 0, (health/100)*width, height);
+		this.health.setPreferredSize(new Dimension((int)((health/100)*(double)width), height));
 	}
 	
 }
