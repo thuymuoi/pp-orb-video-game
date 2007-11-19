@@ -128,6 +128,7 @@ public class Orbit {
 			hud.updateHealth(player.getHealth());
 			System.out.println("Level Passed!");
 			if(currentLevel == 0){
+				winScreen();
 				currentLevel++;
 				stars = mapLoader.generateStars("src/map2.txt");
 				player.setMainPosition(100, 150);
@@ -136,7 +137,11 @@ public class Orbit {
 				currentLevel++;
 				stars = mapLoader.generateStars("src/map3.txt");
 				player.setMainPosition(100, 150);
-			} else {
+			} 
+			else if(currentLevel == 2){
+				winScreen();
+			}
+			else {
 				System.out.println("Level Passed!");
 			}
 		}
@@ -156,27 +161,47 @@ public class Orbit {
 	
 	public static void welcomeScreen(){
 		//display code
+		
 		while(true){
 			if(key1){
 				gameWindow.clear();
+				key1 = false;
 				break;
 			}
+			gameWindow.drawTitle();
 		}
 	}
 	
 	public static void winScreen(){
-		tickTimer.stop();
+		//tickTimer.stop();
 		//display code
-		winTimer = new javax.swing.Timer(34, new ActionListener() {
+		while(true){
+			if(key1){
+				gameWindow.clear();
+				key1 = false;
+				
+				currentLevel = 0;
+				player.setMainPosition(100, 150);
+				welcomeScreen();
+				
+				break;
+			}
+			gameWindow.drawWin();
+		}
+		/*
+		winTimer = new javax.swing.Timer(3000, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gameWindow.clear();
 				currentLevel = 0;
 				player.setMainPosition(100, 150);
 				welcomeScreen();
-				tickTimer.start();
+				//tickTimer.start();
+
 			}
 		});
+			
 		winTimer.start();
+		*/
 	}
 
 }
