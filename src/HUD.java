@@ -17,10 +17,9 @@ public class HUD extends JFrame{
 	 */
 	JFrame frame;
 	JPanel panel;
+	JPanel health;
 	int width = 640;
 	int height = 100;
-	Color RED;
-	Color GREEN;
 	Graphics healthBar;
 	
 	public static void main(String[] args) {
@@ -29,15 +28,17 @@ public class HUD extends JFrame{
 	}
 
 	public HUD(){
-		RED = new Color (255, 0, 0);
-		GREEN = new Color (0, 255, 0);
 		frame = new JFrame();
-		frame.setBackground(RED);
 		panel = new JPanel();
-		panel.setSize(width, 50);
-		panel.setLayout(new FlowLayout());
-		
+		panel.setPreferredSize(new Dimension(width, height));
+		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		panel.setBackground(Color.RED);
 		add(panel);
+
+		health = new JPanel();
+		health.setPreferredSize(new Dimension(width,height));
+		health.setBackground(Color.GREEN);
+		panel.add(health);
 		
 		frame.setContentPane(panel);
         
@@ -48,15 +49,15 @@ public class HUD extends JFrame{
     	
         System.out.println(panel.getGraphics());
         healthBar = panel.getGraphics();
-		healthBar.setColor(GREEN);
+		healthBar.setColor(Color.GREEN);
 		System.out.println(healthBar);
-		healthBar.fillRect(2, 2, width-2, height-2);
+		healthBar.fillRect(0, 0, width, height);
 		
 	}
 	
 	public void updateHealth(int health){
 		//System.out.println("oh shoot");
-		healthBar.dispose();
+		healthBar.clearRect(0, 0, width, height);
 		healthBar.fillRect(0, 0, (health/100)*width, height);
 	}
 	
