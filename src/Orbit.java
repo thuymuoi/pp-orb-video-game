@@ -90,7 +90,7 @@ public class Orbit {
 		for(Object line: (ArrayList)maps.get(currentLevel)){
 			if(collisionDetection.collideWithLine((Line) line)){
 				System.out.println("Hit Wall");
-				try{crashSound.playAudio("src/406shipscolliding.wav");}
+				try{crashSound.playAudio("src/bounce.wav");}
 				catch(Exception e){System.out.println(e);}
 				player.changeHealth(-15);
 				break;
