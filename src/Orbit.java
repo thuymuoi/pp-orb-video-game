@@ -86,11 +86,14 @@ public class Orbit {
 		welcomeScreen();
 		tickTimer.start();
 	}
-
+	/**
+	 * Tick is a function that is called 30 time a second. It does game updating and displaying.
+	 *
+	 */
 	public static void tick(){
 		//Update
 		player.update(key1, key2);
-		if(player.getMainPosition().x <0 || player.getMainPosition().y < 0 || player.getMainPosition().x > 640 || player.getMainPosition().y < 480){
+		if(player.getMainPosition().x <0 || player.getMainPosition().y < 0 || player.getMainPosition().x > 640 || player.getMainPosition().y > 480){
 			player.die();
 			player.changeHealth(100);
 			hud.updateHealth(player.getHealth());
