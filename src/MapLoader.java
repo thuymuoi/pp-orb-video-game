@@ -56,14 +56,17 @@ public class MapLoader {
 			ArrayList<Star> starList = new ArrayList<Star>();
 			starList.add(new Star(graphics, 410,400));
 			starList.add(new Star(graphics, 200,220));
-			starList.add(new Star(graphics, 320,130));
+			starList.add(new Star(graphics, 340,145));
 			return starList;
 		}
 		else if(file == "src/map2.txt"){
 			ArrayList<Star> starList = new ArrayList<Star>();
 			starList.add(new Star(graphics, 410,400));
-			starList.add(new Star(graphics, 100,120));
-			starList.add(new Star(graphics, 320,130));
+			starList.add(new Star(graphics, 150,180));
+			starList.add(new Star(graphics, 260,230));
+			starList.add(new Star(graphics, 410,320));
+			starList.add(new Star(graphics, 390,150));
+			starList.add(new Star(graphics, 470,167));
 			return starList;
 		}
 		return null;
