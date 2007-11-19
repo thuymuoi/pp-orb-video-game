@@ -11,7 +11,11 @@ import java.util.ArrayList;
 
 import javax.swing.Timer;
 
-
+/**Main game class
+ * 
+ * @author James Myoung
+ *
+ */
 public class Orbit {
 	static Player player = new Player();
 	static Boolean key1 = false;
@@ -30,7 +34,10 @@ public class Orbit {
 	static int currentLevel = 0;
 	static HUD hud;
 
-
+/**
+ * 
+ * @param args
+ */
 	public static void main(String[] args) {
 		//Initialization
 		try {
@@ -45,6 +52,9 @@ public class Orbit {
 		hud = new HUD();
 
 		//Input
+		/**
+		 * 
+		 */
 		KeyListener listener = new KeyListener() {
 			public void keyPressed(KeyEvent e) {
 				switch (e.getKeyCode()) {
@@ -63,6 +73,9 @@ public class Orbit {
 				}
 			}
 
+			/** Handles a key release event.
+			 * 
+			 */
 			public void keyReleased(KeyEvent e) {
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_SPACE: key1 = false; break;
@@ -72,6 +85,9 @@ public class Orbit {
 				thrustSound.stopAudio();
 			}
 
+			/** Handles a key hit event.
+			 * 
+			 */
 			public void keyTyped(KeyEvent e) {}
 
 
@@ -166,6 +182,9 @@ public class Orbit {
 
 	}	
 
+	/** Displays the splash screen when game starts.
+	 * 
+	 */
 	public static void welcomeScreen(){
 		//display code
 
@@ -179,6 +198,9 @@ public class Orbit {
 		}
 	}
 
+	/** Displays the win screen when the player wins.
+	 * 
+	 */
 	public static void winScreen(){
 		//tickTimer.stop();
 		//display code
