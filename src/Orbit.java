@@ -166,6 +166,8 @@ public class Orbit {
 		winTimer = new javax.swing.Timer(34, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				gameWindow.clear();
+				currentLevel = 0;
+				player.setMainPosition(100, 150);
 				welcomeScreen();
 			}
 		});
