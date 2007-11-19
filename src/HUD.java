@@ -36,7 +36,7 @@ public class HUD extends JFrame{
 		add(panel);
 
 		health = new JPanel();
-		health.setPreferredSize(new Dimension((int)(.75*(double)(width)),height));
+		health.setPreferredSize(new Dimension(width,height));
 		health.setBackground(Color.GREEN);
 		panel.add(health);
 		
