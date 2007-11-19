@@ -120,6 +120,7 @@ public class Orbit {
 		//System.out.println("Health: " + player.getHealth());
 		if(player.getHealth() <= 0){
 			player.die();
+			hud.restart();
 		}
 		if(stars.size()  == 0){
 			System.out.println("Level Passed!");
