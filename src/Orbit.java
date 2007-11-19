@@ -128,7 +128,6 @@ public class Orbit {
 			hud.updateHealth(player.getHealth());
 			System.out.println("Level Passed!");
 			if(currentLevel == 0){
-				winScreen();
 				currentLevel++;
 				stars = mapLoader.generateStars("src/map2.txt");
 				player.setMainPosition(100, 150);
@@ -177,6 +176,7 @@ public class Orbit {
 		//display code
 		while(true){
 			if(key1){
+				System.out.println("GOT KEY");
 				gameWindow.clear();
 				key1 = false;
 				
