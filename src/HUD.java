@@ -21,12 +21,12 @@ public class HUD extends JFrame{
 	int width = 640;
 	int height = 100;
 	Graphics healthBar;
-	
+	/*
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		HUD hud = new HUD();
 	}
-
+*/
 	public HUD(){
 		frame = new JFrame();
 		panel = new JPanel();
