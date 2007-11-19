@@ -30,9 +30,7 @@ public class Orbit {
 	static int currentLevel = 0;
 	static HUD hud;
 
-	/**
-	 * @param args
-	 */
+
 	public static void main(String[] args) {
 		//Initialization
 		try {
