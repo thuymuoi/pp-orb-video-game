@@ -44,6 +44,7 @@ public class HUD extends JFrame{
         
         //Display the window.
         frame.setSize(width, height);
+        frame.setLocation(0, 481);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     	
