@@ -12,22 +12,19 @@ import java.awt.event.*;
  */
 public class HUD extends JFrame{
 
-	/**
-	 * @param args
-	 */
 	JFrame frame;
 	JPanel panel;
 	JPanel health;
 	int width = 640;
 	int height = 50;
 	Graphics healthBar;
-	/*
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		HUD hud = new HUD();
-	}
-*/
+
+	/** Constructor.  Creates a JFrame and adds a red JPanel that covers the frame area all the time
+	 *  as the background.  Then adds another green JPanel on top which will eventually change in width
+	 *  as the player's health changes.
+	 */ 
 	public HUD(){
+		//Creating a frame and adding a red panel as the background.
 		frame = new JFrame();
 		panel = new JPanel();
 		panel.setPreferredSize(new Dimension(width, height));
@@ -35,33 +32,32 @@ public class HUD extends JFrame{
 		panel.setBackground(Color.RED);
 		add(panel);
 
+		//Creating a green panel that will change in width with time.
 		health = new JPanel();
 		health.setPreferredSize(new Dimension(width,height));
 		health.setBackground(Color.GREEN);
 		panel.add(health);
-		
-		frame.setContentPane(panel);
-        
+	
         //Display the window.
+		frame.setContentPane(panel);
         frame.setSize(width, height);
         frame.setLocation(0, 481);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    	
-        /*
-        System.out.println(panel.getGraphics());
-        healthBar = panel.getGraphics();
-		healthBar.setColor(Color.GREEN);
-		System.out.println(healthBar);
-		healthBar.fillRect(0, 0, width, height);
-		*/
 		
 	}
 	
+	/** Resizes the green health bar according to the player's health.
+	 * 
+	 * @param health The player's health.
+	 */
 	public void updateHealth(int health){
 		this.health.setSize(new Dimension( (int)((((double)(health))/100)*((double)width)), height) );
 	}
 	
+	/** Returns the green health bar back to 100%.
+	 * 
+	 */
 	public void restart(){
 		health.setSize(new Dimension(width, height));
 	}
