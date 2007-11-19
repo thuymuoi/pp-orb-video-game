@@ -6,7 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-/**
+/**The HUD class creates a heads up display that shows the player's health level.  The contains a JFrame and
+ * two JPanels with red and green backgrounds.  The only input is the player's health level.  The width and 
+ * height are maintained in variables in case the window size ever needs to change.
  * @author James Myoung
  *
  */
