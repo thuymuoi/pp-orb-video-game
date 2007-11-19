@@ -19,7 +19,7 @@ public class HUD extends JFrame{
 	JPanel panel;
 	JPanel health;
 	int width = 640;
-	int height = 100;
+	int height = 50;
 	Graphics healthBar;
 	/*
 	public static void main(String[] args) {
