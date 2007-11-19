@@ -1,4 +1,9 @@
-
+/**
+ * Class Double Position take the position as type double
+ * @author Thuy Truong
+ * University of Southern California
+ * Code for a Cause 2007
+ */
 public class DPosition {
 	double x;
 	double y;
