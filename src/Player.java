@@ -62,8 +62,8 @@ public class Player {
 		
 			//if the slow input is pressed, then slow down the speed of the orb
 			if(slow){
-				mainPosition.x -= Math.ceil(speed.x/2);
-				mainPosition.y -= Math.ceil(speed.y/2);
+				mainPosition.x -= new Integer((int)Math.ceil(speed.x/2));
+				mainPosition.y -= new Integer((int)Math.ceil(speed.y/2));
 			}
 			else {
 				mainPosition.x -= speed.x;
