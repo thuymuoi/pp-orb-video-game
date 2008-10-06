@@ -56,6 +56,7 @@ public class Orbit {
 	static Polygon level1 = new Polygon();
 	static int currentLevel = 0;
 	static HUD hud;
+	static KeyListener listener;
 
 /**
  * 
@@ -70,24 +71,28 @@ public class Orbit {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+		
 		stars = mapLoader.generateStars("src/map.txt");
 		player.changeHealth(100);
 		hud = new HUD();
+		
+		gameWindow.setPlayer(player);
+		gameWindow.setStars(stars);
+		gameWindow.setPolygon(mapLoader.getPolygon(currentLevel));
+		
 
 		//Input
-		/**
-		 * 
-		 */
-		KeyListener listener = new KeyListener() {
+		
+		listener = new KeyListener() {
 			public void keyPressed(KeyEvent e) {
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_SPACE: key1 = true; break;
 				case KeyEvent.VK_C: key2 = true; break;
+				case KeyEvent.VK_Z: currentLevel = 2; break; //HACK for testing. Charlene
 				}
 				//System.out.println("Key Down");
 				try
 				{
-
 					thrustSound.playAudio("src/406ship1player2engine.wav");
 				}
 				catch(Exception e2)
@@ -103,6 +108,7 @@ public class Orbit {
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_SPACE: key1 = false; break;
 				case KeyEvent.VK_C: key2 = false; break;
+				case KeyEvent.VK_Z: currentLevel = 2; break; //HACK for testing. Charlene
 				}
 				//System.out.println("Key Up");
 				thrustSound.stopAudio();
@@ -121,7 +127,8 @@ public class Orbit {
 				tick();
 			}
 		});
-
+		
+		
 		welcomeScreen();
 		tickTimer.start();
 	}
@@ -150,12 +157,18 @@ public class Orbit {
 					crashSound.stopAudio();
 				}
 			}
-			for(Object star:stars){
-				if(collisionDetection.genericCollision(new Position(((Star)star).getX(),((Star)star).getY()),10)){
+			//for(Object star:stars){
+			for(int i = 0; i < stars.size(); i++){
+				if(collisionDetection.genericCollision(new Position(((Star)stars.get(i)).getX(),((Star)stars.get(i)).getY()),10)){
 					player.changeHealth(100);
 					hud.updateHealth(player.getHealth());
 					System.out.println("COLLECTED A STAR!!!");
-					stars.remove(star);
+					//Update stars to display in game window
+					gameWindow.setStars(stars);
+					stars.remove(stars.get(i));
+					//Update stars to display in game window
+					gameWindow.setStars(stars);
+					System.out.println("Star #: "+ stars.size());
 					try{collectSound.playAudio("src/bicycle_bell.wav");}
 					catch(Exception e){System.out.println(e);}
 					break;
@@ -176,25 +189,34 @@ public class Orbit {
 				if(currentLevel == 0){
 					currentLevel++;
 					stars = mapLoader.generateStars("src/map2.txt");
+					//Update stars to be displayed in game window
+					gameWindow.setStars(stars);
 					player.setMainPosition(100, 150);
 				}
 				else if(currentLevel == 1){
 					currentLevel++;
 					stars = mapLoader.generateStars("src/map3.txt");
+					//Update stars to be displayed in game window
+					gameWindow.setStars(stars);
 					player.setMainPosition(100, 150);
 				} 
 				else if(currentLevel == 2){
 					winScreen();
 				}
 				else {
-					System.out.println("Level Passed!");
+					System.out.println("Level Passed!" + currentLevel);
 				}
 			}
 		}
-		//Display 
-		gameWindow.clear();
+		//Set info for Display in Game Window
+		
+		gameWindow.setPlayer(player);
+		gameWindow.setStars(stars);
+		gameWindow.setPolygon(mapLoader.getPolygon(currentLevel));
+		
+		//gameWindow.clear();
 
-		gameWindow.getGraphics().fillPolygon(mapLoader.getPolygon(currentLevel));
+		/*		gameWindow.getGraphics().fillPolygon(mapLoader.getPolygon(currentLevel));
 
 		gameWindow.draw(player);
 
@@ -202,7 +224,7 @@ public class Orbit {
 		for(Star star:stars){
 			star.drawStar();
 		}
-
+*/
 	}	
 
 	/** Displays the splash screen when game starts.
@@ -215,7 +237,10 @@ public class Orbit {
 			if(key1){
 				gameWindow.clear();
 				key1 = false;
+				//Start main game window (animation thread)
+				gameWindow.animThread.start();
 				break;
+				
 			}
 			gameWindow.drawTitle();
 		}
@@ -227,7 +252,28 @@ public class Orbit {
 	public static void winScreen(){
 		//tickTimer.stop();
 		//display code
-		while(true){
+		gameWindow.drawWin();
+		tickTimer.stop();
+		gameWindow.animThread = null;
+		
+		//Dispose of offscreen graphics context
+		if(gameWindow.offscreenGraphics != null)
+		{
+			gameWindow.offscreenGraphics.dispose();
+		}
+		gameWindow.animThread = null;
+		//while(gameWindow.animThread == null)
+		//{
+			gameWindow.drawWin();
+		//}
+		
+		
+		
+		System.out.println("WIN SCREEN: " + key1);
+		//System.out.println("WIN SCREEN: " + KeyEvent.VK_SPACE);
+	
+		/*while(true){
+			//System.out.println(key1);
 			if(key1){
 				System.out.println("GOT KEY");
 				gameWindow.clear();
@@ -239,8 +285,11 @@ public class Orbit {
 
 				break;
 			}
-			gameWindow.drawWin();
-		}
+			
+		} //for restarting*/
+		
+		
+		
 		/*
 		winTimer = new javax.swing.Timer(3000, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
