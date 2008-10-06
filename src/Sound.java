@@ -30,7 +30,7 @@ import javax.sound.sampled.SourceDataLine;
 
 /**
  * Implements the playing and stopping of sounds
- * @author Owner
+ * @author Charlene Jeune
  *
  */
 public class Sound {

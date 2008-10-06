@@ -46,7 +46,7 @@ public class Player {
 		speed = new Position(0,0);
 		speedMagnitude = 2;
 		maxSpeed = 2;
-		
+		 
 		mainPosition = new Position (100,150);
 		thruster = new Thruster(mainPosition);
 		
@@ -227,7 +227,7 @@ public class Player {
 		
 		/** Constructor: gets the position of the orb and sets all values of the thruster
 		 * 
-		 * @param orbit Position of th eorb
+		 * @param orbit Position of the orb
 		 */
 		public Thruster(Position orbit){
 			angle = 0;

@@ -60,7 +60,8 @@ public class Star {
 		} catch (IOException e){
 			System.out.println("asdf");
 		}
-        graphics.drawImage(bi, x-10, y-10, null);
+		//Moved to update method of gamewindow class - Charlene
+        //graphics.drawImage(bi, x-10, y-10, null);
 	}
 
 	/**Gets the x coordinate
@@ -93,6 +94,14 @@ public class Star {
 	 */
 	public void setY(int y) {
 		this.y = y;
+	}
+	
+	/**Gets the buffered image
+	 * 
+	 * @return
+	 */
+	public BufferedImage getImage() {
+		return bi;
 	}
 	
 }
