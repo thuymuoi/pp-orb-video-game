@@ -68,6 +68,7 @@ public class Orbit {
 			maps.add(mapLoader.readFile("src/map.txt"));
 			maps.add(mapLoader.readFile("src/map2.txt"));
 			maps.add(mapLoader.readFile("src/map3.txt"));
+			//maps.add(mapLoader.readFile("src/easy_level_1.txt"));
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -265,6 +266,8 @@ public class Orbit {
 		//while(gameWindow.animThread == null)
 		//{
 			gameWindow.drawWin();
+			
+			
 		//}
 		
 		
