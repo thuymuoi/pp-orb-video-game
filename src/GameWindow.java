@@ -119,6 +119,8 @@ public class GameWindow extends JFrame implements Runnable{
 	
 	public void update(Graphics g)
 	{
+		if(animThread != null)
+		{
 		//Clear offscreen graphics context
 		g.setColor(Color.BLACK);
 		g.clearRect(0,0, 640, 480);
@@ -151,6 +153,7 @@ public class GameWindow extends JFrame implements Runnable{
 		synchronized(this)
 		{
 			notifyAll();
+		}
 		}
 	}
 	
